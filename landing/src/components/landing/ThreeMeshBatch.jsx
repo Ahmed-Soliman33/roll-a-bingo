@@ -24,7 +24,7 @@ const AnaglyphScene = () => {
       const isMobile = window.innerWidth < 768;
       const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-      const numSpheres = isMobile ? 15 : isTablet ? 30 : 50;
+      const numSpheres = isMobile ? 10 : isTablet ? 25 : 50;
       const spreadX = isMobile ? 18 : isTablet ? 28 : 36;
       const spreadY = isMobile ? 10 : isTablet ? 15 : 20;
       const spreadZ = isMobile ? 12 : isTablet ? 22 : 28;
@@ -49,7 +49,7 @@ const AnaglyphScene = () => {
         opacity: 0.4,
         depthWrite: false,
       });
-      const cloudCount = isMobile ? 4 : 6;
+      const cloudCount = isMobile ? 3 : 6;
       const clouds = [];
       for (let i = 0; i < cloudCount; i++) {
         const cloud = new THREE.Sprite(cloudMaterial.clone());
@@ -79,7 +79,9 @@ const AnaglyphScene = () => {
         "#006fff",
       ];
 
-      const geometry = new THREE.SphereGeometry(0.5, 12, 12);
+      const geometry = isMobile
+        ? new THREE.SphereGeometry(0.5, 10, 10)
+        : new THREE.SphereGeometry(0.5, 12, 12);
 
       for (let i = 0; i < numSpheres; i++) {
         const color = colors[i % colors.length];

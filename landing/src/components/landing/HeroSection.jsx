@@ -32,9 +32,8 @@ const HeroSection = () => {
           <img
             src={logoImage}
             alt="logo Image"
-            width="120"
+            className="h-auto w-[20vh] cursor-pointer md:w-auto"
             loading="lazy"
-            height="auto"
             style={{ willChange: "transform" }}
           />
         </Link>
