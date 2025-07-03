@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-import cloudImage from "../../assets/fog1.webp"; // ← مسار الصورة
+import cloudImage from "../../assets/fog1.webp";
 
 const AnaglyphScene = () => {
   const containerRef = useRef();
@@ -18,22 +18,19 @@ const AnaglyphScene = () => {
     const isMobile = window.innerWidth < 768;
     const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-    const numSpheres = isMobile ? 40 : isTablet ? 60 : 100;
-    const spreadX = isMobile ? 20 : isTablet ? 30 : 40;
+    const numSpheres = isMobile ? 30 : isTablet ? 50 : 80;
+    const spreadX = isMobile ? 18 : isTablet ? 28 : 36;
     const spreadY = isMobile ? 10 : isTablet ? 15 : 20;
-    const spreadZ = isMobile ? 15 : isTablet ? 25 : 30;
+    const spreadZ = isMobile ? 12 : isTablet ? 22 : 28;
 
     const width = window.innerWidth;
     const height = window.innerHeight;
 
     const container = containerRef.current;
     const scene = new THREE.Scene();
-
-    // 🎨 خلفية شفافة وضباب
     scene.background = null;
     scene.fog = new THREE.Fog("#bf0d74", 5, 60);
 
-    // 📷 الكاميرا
     const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100);
     camera.position.z = 20;
     cameraRef.current = camera;
@@ -43,35 +40,29 @@ const AnaglyphScene = () => {
       map: cloudTexture,
       color: "#670B52",
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.4,
       depthWrite: false,
     });
 
     const clouds = [];
-
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
       const cloud = new THREE.Sprite(cloudMaterial.clone());
-
       cloud.position.set(
         Math.random() * 60 - 30,
         Math.random() * 30 - 15,
         Math.random() * 60 - 30,
       );
-
-      const scale = Math.random() * 20 + 10;
+      const scale = Math.random() * 18 + 8;
       cloud.scale.set(scale, scale, 1);
-
       scene.add(cloud);
       clouds.push(cloud);
     }
 
-    // 💡 الإضاءة
-    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-    const directional = new THREE.DirectionalLight(0xffffff, 1);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.55);
+    const directional = new THREE.DirectionalLight(0xffffff, 0.8);
     directional.position.set(10, 10, 10);
     scene.add(ambient, directional);
 
-    // 🎨 الألوان
     const colors = [
       "#7300bd",
       "#bf0d74",
@@ -82,22 +73,19 @@ const AnaglyphScene = () => {
       "#006fff",
     ];
 
-    // ⚪ الشكل الأساسي
-    const geometry = new THREE.SphereGeometry(0.5, 32, 32);
+    const geometry = new THREE.SphereGeometry(0.5, 24, 24);
 
     for (let i = 0; i < numSpheres; i++) {
       const color = colors[i % colors.length];
-
       const material = new THREE.MeshStandardMaterial({
         color: new THREE.Color(color),
-        roughness: 0.3,
+        roughness: 0.35,
         metalness: 0.4,
         emissive: new THREE.Color(color),
-        emissiveIntensity: 0.1,
+        emissiveIntensity: 0.08,
       });
 
       const mesh = new THREE.Mesh(geometry, material);
-
       mesh.position.set(
         Math.random() * spreadX - spreadX / 2,
         Math.random() * spreadY - spreadY / 2,
@@ -110,19 +98,15 @@ const AnaglyphScene = () => {
       spheresRef.current.push(mesh);
     }
 
-    // 🧱 Renderer
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(width, height);
+    renderer.outputEncoding = THREE.sRGBEncoding;
 
-    while (container.firstChild) {
-      container.removeChild(container.firstChild);
-    }
-
+    while (container.firstChild) container.removeChild(container.firstChild);
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // 🎧 Events
     const onResize = () => {
       windowHalfRef.current.x = window.innerWidth / 2;
       windowHalfRef.current.y = window.innerHeight / 2;
@@ -139,24 +123,23 @@ const AnaglyphScene = () => {
     window.addEventListener("resize", onResize);
     document.addEventListener("mousemove", onMouseMove);
 
-    // 🌀 Animation
     const animate = () => {
       const timer = 0.0001 * Date.now();
 
-      camera.position.x += (mouseRef.current.x - camera.position.x) * 0.05;
-      camera.position.y += (-mouseRef.current.y - camera.position.y) * 0.05;
+      camera.position.x += (mouseRef.current.x - camera.position.x) * 0.04;
+      camera.position.y += (-mouseRef.current.y - camera.position.y) * 0.04;
       camera.lookAt(scene.position);
 
       spheresRef.current.forEach((sphere, i) => {
-        sphere.position.x += 0.05 * Math.cos(timer + i);
-        sphere.position.y += 0.05 * Math.sin(timer + i * 1.2);
-        sphere.rotation.x += 0.005;
-        sphere.rotation.y += 0.005;
+        sphere.position.x += 0.04 * Math.cos(timer + i);
+        sphere.position.y += 0.04 * Math.sin(timer + i * 1.2);
+        sphere.rotation.x += 0.004;
+        sphere.rotation.y += 0.004;
       });
 
       clouds.forEach((cloud, i) => {
-        cloud.position.x += 0.01 * Math.sin(timer + i);
-        cloud.position.y += 0.005 * Math.cos(timer * 0.8 + i);
+        cloud.position.x += 0.008 * Math.sin(timer + i);
+        cloud.position.y += 0.004 * Math.cos(timer * 0.8 + i);
       });
 
       renderer.render(scene, camera);
@@ -168,21 +151,21 @@ const AnaglyphScene = () => {
       window.removeEventListener("resize", onResize);
       document.removeEventListener("mousemove", onMouseMove);
       renderer.dispose();
+      geometry.dispose();
+      spheresRef.current.forEach((mesh) => mesh.geometry.dispose());
     };
   }, []);
 
   return (
-    <>
-      <div
-        ref={containerRef}
-        className="min-h-screen w-full"
-        style={{
-          background:
-            "linear-gradient(to bottom right, #3e054c, #75106b, #af1173)",
-          overflow: "hidden",
-        }}
-      />
-    </>
+    <div
+      ref={containerRef}
+      className="min-h-screen w-full"
+      style={{
+        background:
+          "linear-gradient(to bottom right, #3e054c, #75106b, #af1173)",
+        overflow: "hidden",
+      }}
+    />
   );
 };
 

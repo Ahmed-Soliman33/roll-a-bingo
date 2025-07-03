@@ -9,11 +9,11 @@ import fontJson from "../../assets/Backso_Regular.json";
 const TessellatedText = () => {
   const containerRef = useRef();
 
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-
   useEffect(() => {
     let scene, camera, renderer, mesh, uniforms;
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
     const getCameraZ = (w) => {
       if (w < 480) return 480;
@@ -104,11 +104,11 @@ const TessellatedText = () => {
       if (width > 420)
         return geometry.translate(-textWidth / 2, -boundingBox.min.y * 95, -40);
 
-      return geometry.translate(-textWidth / 2, -boundingBox.min.y * 100, -100);
+      return geometry.translate(-textWidth / 2, -boundingBox.min.y * 100, -110);
     }
     getTranslate();
 
-    const tessellateModifier = new TessellateModifier(6, 5);
+    const tessellateModifier = new TessellateModifier(4, 3);
     geometry = tessellateModifier.modify(geometry);
 
     const numFaces = geometry.attributes.position.count / 3;
@@ -171,7 +171,7 @@ const TessellatedText = () => {
     mesh = new THREE.Mesh(geometry, shaderMaterial);
     scene.add(mesh);
 
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
 
@@ -215,8 +215,10 @@ const TessellatedText = () => {
     return () => {
       window.removeEventListener("resize", onResize);
       renderer.dispose();
+      geometry.dispose();
+      shaderMaterial.dispose();
     };
-  }, [width, height]);
+  }, []);
 
   return (
     <div className="relative flex min-h-[70vh] w-full flex-col gap-10 overflow-hidden sm:h-[80vh] md:h-screen">
