@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import * as THREE from "three";
 
 import cloudImage from "../../assets/fog1.webp";
@@ -152,7 +152,7 @@ const AnaglyphScene = () => {
       document.removeEventListener("mousemove", onMouseMove);
       renderer.dispose();
       geometry.dispose();
-      spheresRef.current.forEach((mesh) => mesh.geometry.dispose());
+      spheresRef?.current.forEach((mesh) => mesh.geometry.dispose());
     };
   }, []);
 
@@ -169,4 +169,4 @@ const AnaglyphScene = () => {
   );
 };
 
-export default AnaglyphScene;
+export default memo(AnaglyphScene);

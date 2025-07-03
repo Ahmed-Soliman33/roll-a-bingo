@@ -12,7 +12,7 @@ const HeroSection = () => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* الخلفية المتحركة */}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={null}>
         <AnaglyphScene />
       </Suspense>
 
@@ -22,16 +22,24 @@ const HeroSection = () => {
         alt=""
         className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-30"
         loading="lazy"
+        style={{ willChange: "transform" }}
       />
 
       {/* المحتوى النصي أو أي عناصر أمامية */}
 
       <div className="absolute top-1/2 left-1/2 z-40 h-[90vh] w-[100vw] -translate-x-1/2 -translate-y-1/2 text-center text-white">
         <Link to="/">
-          <img src={logoImage} alt="logo Image" />
+          <img
+            src={logoImage}
+            alt="logo Image"
+            width="120"
+            loading="lazy"
+            height="auto"
+            style={{ willChange: "transform" }}
+          />
         </Link>
 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={null}>
           <AnimatedTextShader />
         </Suspense>
       </div>
