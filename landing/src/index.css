@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+@theme {
+  --color-primaryColor: #7300bd;
+  --color-secondaryColor: #bf0d74;
+  --color-tertiaryColor: #ea88c6;
+  --color-yellowColor: #f6c500;
+  --color-greenColor: #489373;
+  --color-redColor: #c10a11;
+  --color-blueColor: #006fff;
+  --color-primaryTextColor: #fff;
+  --color-secondaryTextColor: #4f4f4f;
+
+  --font-workSansFont: "Work Sans", sans-serif;
+  --font-robotoFont: "Roboto", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-robotoFont;
+    @apply bg-white;
+    @apply text-primaryTextColor;
+    @apply scroll-smooth;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
