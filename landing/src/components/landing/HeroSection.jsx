@@ -3,18 +3,22 @@ import fogImage from "@assets/fog.webp";
 import logoImage from "/logo.webp";
 import { Link } from "react-router-dom";
 import AnimatedTextShader from "./AnimatedTextShader";
+import { Suspense } from "react";
 
 const HeroSection = () => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* الخلفية المتحركة */}
-      <AnaglyphScene />
+      <Suspense fallback={<div>Loading...</div>}>
+        <AnaglyphScene />
+      </Suspense>
 
       {/* طبقة الضباب */}
       <img
         src={fogImage}
         alt=""
         className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-30"
+        loading="lazy"
       />
 
       {/* المحتوى النصي أو أي عناصر أمامية */}
@@ -23,8 +27,10 @@ const HeroSection = () => {
         <Link to="/">
           <img src={logoImage} alt="logo Image" />
         </Link>
-        {/* <h1 className="text-4xl font-bold">ROLL-A-BINGO</h1> */}
-        <AnimatedTextShader />
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <AnimatedTextShader />
+        </Suspense>
       </div>
     </div>
   );

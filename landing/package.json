@@ -12,11 +12,9 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "framer-motion": "^12.15.0",
-    "lil-gui": "^0.20.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
-    "stats.js": "^0.17.0",
     "three": "^0.178.0"
   },
   "devDependencies": {
