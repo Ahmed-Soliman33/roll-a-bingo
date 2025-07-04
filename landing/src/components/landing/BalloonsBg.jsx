@@ -4,13 +4,7 @@ import * as THREE from "three";
 const BalloonsBg = () => {
   const containerRef = useRef();
   const spheresRef = useRef([]);
-  const cameraRef = useRef();
   const rendererRef = useRef();
-  const mouseRef = useRef({ x: 0, y: 0 });
-  const windowHalfRef = useRef({
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-  });
 
   useEffect(() => {
     if ("requestIdleCallback" in window) {
@@ -23,10 +17,10 @@ const BalloonsBg = () => {
       const isMobile = window.innerWidth < 768;
       const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-      const numSpheres = isMobile ? 20 : isTablet ? 35 : 70;
-      const spreadX = isMobile ? 18 : isTablet ? 28 : 36;
-      const spreadY = isMobile ? 10 : isTablet ? 15 : 20;
-      const spreadZ = isMobile ? 12 : isTablet ? 22 : 28;
+      const numSpheres = isMobile ? 10 : isTablet ? 20 : 30;
+      const spreadX = isMobile ? 10 : isTablet ? 20 : 28;
+      const spreadY = isMobile ? 12 : isTablet ? 12 : 18;
+      const spreadZ = isMobile ? 10 : isTablet ? 16 : 24;
 
       const width = window.innerWidth;
       const height = window.innerHeight;
@@ -34,38 +28,9 @@ const BalloonsBg = () => {
       const container = containerRef.current;
       const scene = new THREE.Scene();
       scene.background = null;
-      scene.fog = new THREE.Fog("#bf0d74", 5, 60);
 
       const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100);
-      camera.position.z = 20;
-      cameraRef.current = camera;
-
-      // const cloudTexture = new THREE.TextureLoader().load(
-      //   "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594366/fog1_zobjtx.webp",
-      // );
-
-      // const cloudMaterial = new THREE.SpriteMaterial({
-      //   map: cloudTexture,
-      //   color: "#670B52",
-      //   transparent: true,
-      //   opacity: 0.4,
-      //   depthWrite: false,
-      // });
-
-      // const cloudCount = isMobile ? 3 : 6;
-      // const clouds = [];
-      // for (let i = 0; i < cloudCount; i++) {
-      //   const cloud = new THREE.Sprite(cloudMaterial.clone());
-      //   cloud.position.set(
-      //     Math.random() * 60 - 30,
-      //     Math.random() * 30 - 15,
-      //     Math.random() * 60 - 30,
-      //   );
-      //   const scale = Math.random() * 18 + 8;
-      //   cloud.scale.set(scale, scale, 1);
-      //   scene.add(cloud);
-      //   clouds.push(cloud);
-      // }
+      camera.position.set(0, 0, 20);
 
       const ambient = new THREE.AmbientLight(0xffffff, 0.55);
       const directional = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -82,12 +47,10 @@ const BalloonsBg = () => {
         "#006fff",
       ];
 
-      // ✅ إنشاء Geometry واحد فقط
       const baseGeometry = isMobile
         ? new THREE.SphereGeometry(0.5, 10, 10)
         : new THREE.SphereGeometry(0.5, 12, 12);
 
-      // ✅ إنشاء materials للألوان مرة واحدة فقط
       const colorMaterials = colors.map(
         (color) =>
           new THREE.MeshStandardMaterial({
@@ -125,45 +88,37 @@ const BalloonsBg = () => {
       container.appendChild(renderer.domElement);
       rendererRef.current = renderer;
 
-      const onResize = () => {
-        windowHalfRef.current.x = window.innerWidth / 2;
-        windowHalfRef.current.y = window.innerHeight / 2;
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      };
-
-      const onMouseMove = (event) => {
-        mouseRef.current.x = (event.clientX - windowHalfRef.current.x) / 100;
-        mouseRef.current.y = (event.clientY - windowHalfRef.current.y) / 100;
-      };
-
-      window.addEventListener("resize", onResize);
-      document.addEventListener("mousemove", onMouseMove);
-
       const animate = () => {
-        const timer = 0.0001 * Date.now();
-
-        camera.position.x += (mouseRef.current.x - camera.position.x) * 0.04;
-        camera.position.y += (-mouseRef.current.y - camera.position.y) * 0.04;
-        camera.lookAt(scene.position);
+        const timer = 0.00005 * Date.now(); // slower movement
 
         spheresRef.current.forEach((sphere, i) => {
-          sphere.position.x += 0.04 * Math.cos(timer + i);
-          sphere.position.y += 0.04 * Math.sin(timer + i * 1.2);
-          sphere.rotation.x += 0.004;
-          sphere.rotation.y += 0.004;
-        });
+          // 3D motion on x, y, z
+          sphere.position.x += 0.015 * Math.cos(timer + i * 0.5);
+          sphere.position.y += 0.015 * Math.sin(timer + i * 0.8);
+          sphere.position.z += 0.015 * Math.cos(timer + i * 1.1);
 
-        // clouds.forEach((cloud, i) => {
-        //   cloud.position.x += 0.008 * Math.sin(timer + i);
-        //   cloud.position.y += 0.004 * Math.cos(timer * 0.8 + i);
-        // });
+          sphere.rotation.x += 0.002;
+          sphere.rotation.y += 0.002;
+
+          const { x, y, z } = sphere.position;
+          const maxDistance = 20;
+
+          if (
+            Math.abs(x) > maxDistance ||
+            Math.abs(y) > maxDistance ||
+            Math.abs(z) > maxDistance
+          ) {
+            sphere.position.set(
+              (Math.random() - 0.5) * spreadX,
+              (Math.random() - 0.5) * spreadY,
+              (Math.random() - 0.5) * spreadZ,
+            );
+          }
+        });
 
         renderer.render(scene, camera);
       };
 
-      // ✅ تحسين الأداء عند الخروج من الـ viewport
       const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           renderer.setAnimationLoop(animate);
@@ -173,13 +128,18 @@ const BalloonsBg = () => {
       });
       observer.observe(container);
 
+      const onResize = () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      };
+
+      window.addEventListener("resize", onResize);
+
       return () => {
         window.removeEventListener("resize", onResize);
-        document.removeEventListener("mousemove", onMouseMove);
         renderer.dispose();
         baseGeometry.dispose();
-        // cloudMaterial.dispose();
-        // cloudTexture.dispose();
         colorMaterials.forEach((m) => m.dispose());
         spheresRef.current = [];
       };

@@ -18,7 +18,7 @@ const HeroSection = () => {
       <img
         src="https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp"
         alt="Fog Image"
-        className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-30"
+        className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-40"
         style={{ willChange: "transform" }}
       />
 
