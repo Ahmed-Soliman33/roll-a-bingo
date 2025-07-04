@@ -42,7 +42,9 @@ const AnaglyphScene = () => {
       camera.position.z = 20;
       cameraRef.current = camera;
 
-      const cloudTexture = new THREE.TextureLoader().load(cloudImage);
+      const cloudTexture = new THREE.TextureLoader().load(
+        "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp",
+      );
       const cloudMaterial = new THREE.SpriteMaterial({
         map: cloudTexture,
         color: "#670B52",

@@ -1,5 +1,5 @@
 // import fogImage from "@assets/fog.webp";
-import fogImage from "@assets/https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp";
+import fogImage from "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp";
 import logoImage from "/logo.webp";
 import { Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
@@ -17,7 +17,7 @@ const HeroSection = () => {
 
       {/* طبقة الضباب */}
       <img
-        src={fogImage}
+        src="https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp"
         alt=""
         className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-30"
         loading="lazy"
