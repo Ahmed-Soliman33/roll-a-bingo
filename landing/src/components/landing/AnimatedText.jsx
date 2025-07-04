@@ -9,15 +9,21 @@ import {
   ShaderMaterial,
 } from "three";
 
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-import fontJson from "../../assets/Backso_Regular.json";
-
 const AnimatedText = () => {
   const containerRef = useRef();
 
   const initScene = async () => {
+    // eslint-disable-next-line no-unused-vars
     let scene, camera, renderer, mesh, uniforms, animationId;
+
+    const fontJson = await import("../../assets/Backso_Regular.json");
+
+    const { FontLoader } = await import(
+      "three/examples/jsm/loaders/FontLoader"
+    );
+    const { TextGeometry } = await import(
+      "three/examples/jsm/geometries/TextGeometry"
+    );
 
     const width = window.innerWidth;
     const height = window.innerHeight;

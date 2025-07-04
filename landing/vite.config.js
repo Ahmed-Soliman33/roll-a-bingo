@@ -29,7 +29,8 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ["react", "react-dom"],
-          vendor: ["three", "react-router-dom"],
+          three: ["three"],
+          router: ["react-router-dom"],
         },
       },
     },
