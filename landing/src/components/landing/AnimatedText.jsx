@@ -172,7 +172,8 @@ const AnimatedText = () => {
     scene.add(mesh);
 
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
     renderer.setSize(width, height);
 
     if (containerRef.current) {
@@ -200,6 +201,14 @@ const AnimatedText = () => {
     };
 
     animate();
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        animate();
+      } else {
+        return;
+      }
+    });
+    observer.observe(containerRef.current);
 
     const onResize = () => {
       const newWidth = window.innerWidth;

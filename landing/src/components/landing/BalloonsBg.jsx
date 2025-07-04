@@ -1,9 +1,6 @@
 import { memo, useEffect, useRef } from "react";
 import * as THREE from "three";
 
-// import cloudImage from "../../assets/fog1.webp";
-// import cloudImage from "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594366/fog1_zobjtx.webp";
-
 const BalloonsBg = () => {
   const containerRef = useRef();
   const spheresRef = useRef([]);
@@ -21,6 +18,7 @@ const BalloonsBg = () => {
     } else {
       setTimeout(initScene, 0);
     }
+
     function initScene() {
       const isMobile = window.innerWidth < 768;
       const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
@@ -45,6 +43,7 @@ const BalloonsBg = () => {
       const cloudTexture = new THREE.TextureLoader().load(
         "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp",
       );
+
       const cloudMaterial = new THREE.SpriteMaterial({
         map: cloudTexture,
         color: "#670B52",
@@ -52,6 +51,7 @@ const BalloonsBg = () => {
         opacity: 0.4,
         depthWrite: false,
       });
+
       const cloudCount = isMobile ? 3 : 6;
       const clouds = [];
       for (let i = 0; i < cloudCount; i++) {
@@ -82,27 +82,31 @@ const BalloonsBg = () => {
         "#006fff",
       ];
 
-      const geometry = isMobile
+      // ✅ إنشاء Geometry واحد فقط
+      const baseGeometry = isMobile
         ? new THREE.SphereGeometry(0.5, 10, 10)
         : new THREE.SphereGeometry(0.5, 12, 12);
 
-      for (let i = 0; i < numSpheres; i++) {
-        const color = colors[i % colors.length];
-        const material = new THREE.MeshStandardMaterial({
-          color: new THREE.Color(color),
-          roughness: 0.35,
-          metalness: 0.4,
-          emissive: new THREE.Color(color),
-          emissiveIntensity: 0.08,
-        });
+      // ✅ إنشاء materials للألوان مرة واحدة فقط
+      const colorMaterials = colors.map(
+        (color) =>
+          new THREE.MeshStandardMaterial({
+            color: new THREE.Color(color),
+            roughness: 0.35,
+            metalness: 0.4,
+            emissive: new THREE.Color(color),
+            emissiveIntensity: 0.08,
+          }),
+      );
 
-        const mesh = new THREE.Mesh(geometry, material);
+      for (let i = 0; i < numSpheres; i++) {
+        const material = colorMaterials[i % colorMaterials.length];
+        const mesh = new THREE.Mesh(baseGeometry, material);
         mesh.position.set(
           Math.random() * spreadX - spreadX / 2,
           Math.random() * spreadY - spreadY / 2,
           Math.random() * spreadZ - spreadZ / 2,
         );
-
         const scale = Math.random() * 1.2 + 0.3;
         mesh.scale.set(scale, scale, scale);
         scene.add(mesh);
@@ -159,16 +163,25 @@ const BalloonsBg = () => {
         renderer.render(scene, camera);
       };
 
-      renderer.setAnimationLoop(animate);
+      // ✅ تحسين الأداء عند الخروج من الـ viewport
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          renderer.setAnimationLoop(animate);
+        } else {
+          renderer.setAnimationLoop(null);
+        }
+      });
+      observer.observe(container);
 
       return () => {
         window.removeEventListener("resize", onResize);
         document.removeEventListener("mousemove", onMouseMove);
         renderer.dispose();
-        geometry.dispose();
+        baseGeometry.dispose();
         cloudMaterial.dispose();
         cloudTexture.dispose();
-        spheresRef.current.forEach((m) => m.geometry.dispose());
+        colorMaterials.forEach((m) => m.dispose());
+        spheresRef.current = [];
       };
     }
   }, []);

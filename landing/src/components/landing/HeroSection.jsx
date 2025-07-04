@@ -2,25 +2,22 @@ import { Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import logoImage from "/logo.webp";
-
-const BalloonsBg = lazy(() => import("./BalloonsBg"));
-const AnimatedText = lazy(() => import("./AnimatedText"));
+import BalloonsBg from "./BalloonsBg";
+import AnimatedText from "./AnimatedText";
 
 const HeroSection = () => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Animated Background */}
-      <Suspense fallback={null}>
-        <BalloonsBg />
-      </Suspense>
+      <BalloonsBg />
 
       {/* Fog layer */}
       <img
         src="https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp"
-        alt=""
+        alt="Fog Image"
         className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-30"
-        loading="lazy"
         style={{ willChange: "transform" }}
+        loading="lazy"
       />
 
       {/* Text content or any front-end elements */}
@@ -30,14 +27,12 @@ const HeroSection = () => {
             src={logoImage}
             alt="logo Image"
             className="h-auto w-[20vh] cursor-pointer md:w-auto"
-            loading="lazy"
             style={{ willChange: "transform" }}
+            fetchPriority="high"
           />
         </Link>
 
-        <Suspense fallback={null}>
-          <AnimatedText />
-        </Suspense>
+        <AnimatedText />
       </div>
     </div>
   );
