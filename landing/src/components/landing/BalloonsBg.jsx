@@ -41,7 +41,7 @@ const BalloonsBg = () => {
       cameraRef.current = camera;
 
       const cloudTexture = new THREE.TextureLoader().load(
-        "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp",
+        "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594366/fog1_zobjtx.webp",
       );
 
       const cloudMaterial = new THREE.SpriteMaterial({

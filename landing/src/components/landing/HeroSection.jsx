@@ -20,7 +20,6 @@ const HeroSection = () => {
         alt="Fog Image"
         className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-30"
         style={{ willChange: "transform" }}
-        loading="lazy"
       />
 
       {/* Text content or any front-end elements */}
