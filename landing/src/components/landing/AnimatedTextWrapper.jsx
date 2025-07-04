@@ -1,23 +1,23 @@
-import { useInView } from "react-intersection-observer";
-import { Suspense, lazy } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 
 const AnimatedText = lazy(() => import("./AnimatedText"));
 
 const AnimatedTextWrapper = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    rootMargin: "100px 0px",
-  });
+  const [show, setShow] = useState(false);
 
-  return (
-    <div ref={ref}>
-      {inView && (
-        <Suspense fallback={null}>
-          <AnimatedText />
-        </Suspense>
-      )}
-    </div>
-  );
+  useEffect(() => {
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(() => setShow(true));
+    } else {
+      setTimeout(() => setShow(true), 1000);
+    }
+  }, []);
+
+  return show ? (
+    <Suspense fallback={null}>
+      <AnimatedText />
+    </Suspense>
+  ) : null;
 };
 
 export default AnimatedTextWrapper;
