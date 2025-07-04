@@ -4,8 +4,8 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { TessellateModifier } from "three/examples/jsm/modifiers/TessellateModifier";
 
-// import fontJson from "../../assets/Backso_Regular.json";
-import fontJson from "https://res.cloudinary.com/dqlvs4ae5/raw/upload/v1751594365/Backso_Regular_unez5e.json";
+import fontJson from "../../assets/Backso_Regular.json";
+// import fontJson from "https://res.cloudinary.com/dqlvs4ae5/raw/upload/v1751594365/Backso_Regular_unez5e.json";
 
 const TessellatedText = () => {
   const containerRef = useRef();
