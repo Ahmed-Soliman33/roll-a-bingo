@@ -177,7 +177,7 @@ const AnimatedText = () => {
 
     const animate = () => {
       animationId = requestAnimationFrame(animate);
-      uniforms.amplitude.value = 1 + Math.sin(Date.now() * 0.001 * 0.3);
+      uniforms.amplitude.value = 1 + Math.sin(Date.now() * 0.001 * 0.4);
       rotation += 0.0015 * direction;
       if (rotation > maxRotation || rotation < -maxRotation) direction *= -1;
       mesh.rotation.y = rotation;

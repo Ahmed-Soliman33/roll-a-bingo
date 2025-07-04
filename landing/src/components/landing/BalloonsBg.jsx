@@ -23,7 +23,7 @@ const BalloonsBg = () => {
       const isMobile = window.innerWidth < 768;
       const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-      const numSpheres = isMobile ? 10 : isTablet ? 25 : 50;
+      const numSpheres = isMobile ? 20 : isTablet ? 35 : 70;
       const spreadX = isMobile ? 18 : isTablet ? 28 : 36;
       const spreadY = isMobile ? 10 : isTablet ? 15 : 20;
       const spreadZ = isMobile ? 12 : isTablet ? 22 : 28;
@@ -117,7 +117,7 @@ const BalloonsBg = () => {
         alpha: true,
         antialias: false,
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.2));
       renderer.setSize(width, height);
       renderer.outputEncoding = THREE.sRGBEncoding;
 
