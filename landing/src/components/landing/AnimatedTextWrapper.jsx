@@ -9,7 +9,7 @@ const AnimatedTextWrapper = () => {
     if ("requestIdleCallback" in window) {
       requestIdleCallback(() => setShow(true));
     } else {
-      setTimeout(() => setShow(true), 1000);
+      setShow(true);
     }
   }, []);
 
