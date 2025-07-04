@@ -118,7 +118,9 @@ const TessellatedText = () => {
     const color = new THREE.Color();
     for (let f = 0; f < numFaces; f++) {
       const index = 9 * f;
-      color.setHSL(0.9 * Math.random(), 0.8, 0.6);
+      // set all to shades of #f6c500
+      color.setStyle("#f6c500");
+      color.offsetHSL(0, 0, (Math.random() - 0.5) * 0.2); // slight variation
       const d = 8 * (0.5 - Math.random());
       for (let i = 0; i < 3; i++) {
         colors[index + 3 * i + 0] = color.r;
