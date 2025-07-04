@@ -40,32 +40,32 @@ const BalloonsBg = () => {
       camera.position.z = 20;
       cameraRef.current = camera;
 
-      const cloudTexture = new THREE.TextureLoader().load(
-        "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594366/fog1_zobjtx.webp",
-      );
+      // const cloudTexture = new THREE.TextureLoader().load(
+      //   "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594366/fog1_zobjtx.webp",
+      // );
 
-      const cloudMaterial = new THREE.SpriteMaterial({
-        map: cloudTexture,
-        color: "#670B52",
-        transparent: true,
-        opacity: 0.4,
-        depthWrite: false,
-      });
+      // const cloudMaterial = new THREE.SpriteMaterial({
+      //   map: cloudTexture,
+      //   color: "#670B52",
+      //   transparent: true,
+      //   opacity: 0.4,
+      //   depthWrite: false,
+      // });
 
-      const cloudCount = isMobile ? 3 : 6;
-      const clouds = [];
-      for (let i = 0; i < cloudCount; i++) {
-        const cloud = new THREE.Sprite(cloudMaterial.clone());
-        cloud.position.set(
-          Math.random() * 60 - 30,
-          Math.random() * 30 - 15,
-          Math.random() * 60 - 30,
-        );
-        const scale = Math.random() * 18 + 8;
-        cloud.scale.set(scale, scale, 1);
-        scene.add(cloud);
-        clouds.push(cloud);
-      }
+      // const cloudCount = isMobile ? 3 : 6;
+      // const clouds = [];
+      // for (let i = 0; i < cloudCount; i++) {
+      //   const cloud = new THREE.Sprite(cloudMaterial.clone());
+      //   cloud.position.set(
+      //     Math.random() * 60 - 30,
+      //     Math.random() * 30 - 15,
+      //     Math.random() * 60 - 30,
+      //   );
+      //   const scale = Math.random() * 18 + 8;
+      //   cloud.scale.set(scale, scale, 1);
+      //   scene.add(cloud);
+      //   clouds.push(cloud);
+      // }
 
       const ambient = new THREE.AmbientLight(0xffffff, 0.55);
       const directional = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -155,10 +155,10 @@ const BalloonsBg = () => {
           sphere.rotation.y += 0.004;
         });
 
-        clouds.forEach((cloud, i) => {
-          cloud.position.x += 0.008 * Math.sin(timer + i);
-          cloud.position.y += 0.004 * Math.cos(timer * 0.8 + i);
-        });
+        // clouds.forEach((cloud, i) => {
+        //   cloud.position.x += 0.008 * Math.sin(timer + i);
+        //   cloud.position.y += 0.004 * Math.cos(timer * 0.8 + i);
+        // });
 
         renderer.render(scene, camera);
       };
@@ -178,8 +178,8 @@ const BalloonsBg = () => {
         document.removeEventListener("mousemove", onMouseMove);
         renderer.dispose();
         baseGeometry.dispose();
-        cloudMaterial.dispose();
-        cloudTexture.dispose();
+        // cloudMaterial.dispose();
+        // cloudTexture.dispose();
         colorMaterials.forEach((m) => m.dispose());
         spheresRef.current = [];
       };
