@@ -231,7 +231,7 @@ const AnimatedText = () => {
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-10 h-full w-full"
       />
-      <div className="font-gameBubble absolute top-[40%] left-1/2 z-20 w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-[12px] font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:text-xl md:tracking-widest lg:text-2xl">
+      <div className="font-gameBubble absolute top-[38%] left-1/2 z-20 w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-[11px] font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:top-[40%] md:text-xl md:tracking-widest lg:text-2xl">
         EXPERIENCE THE THRILL OF THIS MODERN GAME
       </div>
     </div>

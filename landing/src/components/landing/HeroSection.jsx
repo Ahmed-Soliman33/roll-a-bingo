@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import logoImage from "/logo.webp";
-import AnimatedTextWrapper from "./AnimatedTextWrapper";
-import BalloonsBgWrapper from "./BallonsBgWrapper";
+import AnimatedTextWrapper from "./hero/AnimatedTextWrapper";
+import BalloonsBgWrapper from "./hero/BallonsBgWrapper";
 
 const HeroSection = () => {
   return (
@@ -25,7 +25,7 @@ const HeroSection = () => {
           <img
             src={logoImage}
             alt="logo Image"
-            className="h-auto w-[20vh] cursor-pointer md:w-auto"
+            className="h-auto w-[20vh] cursor-pointer pt-5 md:w-auto"
             style={{ willChange: "transform" }}
             fetchPriority="high"
           />
