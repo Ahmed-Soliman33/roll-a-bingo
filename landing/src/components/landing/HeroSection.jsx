@@ -2,14 +2,17 @@ import { Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import logoImage from "/logo.webp";
-import BalloonsBg from "./BalloonsBg";
-import AnimatedText from "./AnimatedText";
+
+const BalloonsBg = lazy(() => import("./BalloonsBg"));
+const AnimatedText = lazy(() => import("./AnimatedText"));
 
 const HeroSection = () => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Animated Background */}
-      <BalloonsBg />
+      <Suspense fallback={null}>
+        <BalloonsBg />
+      </Suspense>
 
       {/* Fog layer */}
       <img
@@ -32,7 +35,9 @@ const HeroSection = () => {
           />
         </Link>
 
-        <AnimatedText />
+        <Suspense fallback={null}>
+          <AnimatedText />
+        </Suspense>
       </div>
     </div>
   );
