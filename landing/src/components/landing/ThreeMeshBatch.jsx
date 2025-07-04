@@ -1,7 +1,8 @@
 import { memo, useEffect, useRef } from "react";
 import * as THREE from "three";
 
-import cloudImage from "../../assets/fog1.webp";
+// import cloudImage from "../../assets/fog1.webp";
+import cloudImage from "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594366/fog1_zobjtx.webp";
 
 const AnaglyphScene = () => {
   const containerRef = useRef();

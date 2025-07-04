@@ -1,8 +1,7 @@
-// import AnaglyphScene from "./ThreeMeshBatch";
-import fogImage from "@assets/fog.webp";
+// import fogImage from "@assets/fog.webp";
+import fogImage from "@assets/https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp";
 import logoImage from "/logo.webp";
 import { Link } from "react-router-dom";
-// import AnimatedTextShader from "./AnimatedTextShader";
 import { Suspense, lazy } from "react";
 
 const AnaglyphScene = lazy(() => import("./ThreeMeshBatch"));
