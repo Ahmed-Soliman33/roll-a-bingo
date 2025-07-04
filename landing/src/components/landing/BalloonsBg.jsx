@@ -1,5 +1,15 @@
 import { memo, useEffect, useRef } from "react";
-import * as THREE from "three";
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  Mesh,
+  MeshStandardMaterial,
+  SphereGeometry,
+  Color,
+  AmbientLight,
+  DirectionalLight,
+} from "three";
 
 const BalloonsBg = () => {
   const containerRef = useRef();
@@ -26,14 +36,14 @@ const BalloonsBg = () => {
       const height = window.innerHeight;
 
       const container = containerRef.current;
-      const scene = new THREE.Scene();
+      const scene = new Scene();
       scene.background = null;
 
-      const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100);
+      const camera = new PerspectiveCamera(60, width / height, 0.1, 100);
       camera.position.set(0, 0, 20);
 
-      const ambient = new THREE.AmbientLight(0xffffff, 0.55);
-      const directional = new THREE.DirectionalLight(0xffffff, 0.8);
+      const ambient = new AmbientLight(0xffffff, 0.55);
+      const directional = new DirectionalLight(0xffffff, 0.8);
       directional.position.set(10, 10, 10);
       scene.add(ambient, directional);
 
@@ -48,23 +58,23 @@ const BalloonsBg = () => {
       ];
 
       const baseGeometry = isMobile
-        ? new THREE.SphereGeometry(0.5, 10, 10)
-        : new THREE.SphereGeometry(0.5, 12, 12);
+        ? new SphereGeometry(0.5, 10, 10)
+        : new SphereGeometry(0.5, 12, 12);
 
       const colorMaterials = colors.map(
         (color) =>
-          new THREE.MeshStandardMaterial({
-            color: new THREE.Color(color),
+          new MeshStandardMaterial({
+            color: new Color(color),
             roughness: 0.35,
             metalness: 0.4,
-            emissive: new THREE.Color(color),
+            emissive: new Color(color),
             emissiveIntensity: 0.08,
           }),
       );
 
       for (let i = 0; i < numSpheres; i++) {
         const material = colorMaterials[i % colorMaterials.length];
-        const mesh = new THREE.Mesh(baseGeometry, material);
+        const mesh = new Mesh(baseGeometry, material);
         mesh.position.set(
           Math.random() * spreadX - spreadX / 2,
           Math.random() * spreadY - spreadY / 2,
@@ -76,13 +86,13 @@ const BalloonsBg = () => {
         spheresRef.current.push(mesh);
       }
 
-      const renderer = new THREE.WebGLRenderer({
+      const renderer = new WebGLRenderer({
         alpha: true,
         antialias: false,
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.2));
       renderer.setSize(width, height);
-      renderer.outputEncoding = THREE.sRGBEncoding;
+      // renderer.outputEncoding = sRGBEncoding;
 
       while (container.firstChild) container.removeChild(container.firstChild);
       container.appendChild(renderer.domElement);

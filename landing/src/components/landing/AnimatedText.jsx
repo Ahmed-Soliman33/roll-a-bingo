@@ -1,5 +1,14 @@
 import { memo, useEffect, useRef } from "react";
-import * as THREE from "three";
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  Mesh,
+  Color,
+  BufferAttribute,
+  ShaderMaterial,
+} from "three";
+
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import fontJson from "../../assets/Backso_Regular.json";
@@ -28,9 +37,9 @@ const AnimatedText = () => {
       return 30;
     };
 
-    camera = new THREE.PerspectiveCamera(40, width / height, 1, 10000);
+    camera = new PerspectiveCamera(40, width / height, 1, 10000);
     camera.position.set(0, 100, getCameraZ(width));
-    scene = new THREE.Scene();
+    scene = new Scene();
 
     const font = new FontLoader().parse(fontJson);
     const fontSize = getFontSize(width);
@@ -114,7 +123,7 @@ const AnimatedText = () => {
     const colors = new Float32Array(numFaces * 9);
     const displacement = new Float32Array(numFaces * 9);
 
-    const color = new THREE.Color();
+    const color = new Color();
     for (let i = 0; i < numFaces; i++) {
       const idx = i * 9;
       color.setStyle("#f6c500");
@@ -126,15 +135,12 @@ const AnimatedText = () => {
       }
     }
 
-    geometry.setAttribute("customColor", new THREE.BufferAttribute(colors, 3));
-    geometry.setAttribute(
-      "displacement",
-      new THREE.BufferAttribute(displacement, 3),
-    );
+    geometry.setAttribute("customColor", new BufferAttribute(colors, 3));
+    geometry.setAttribute("displacement", new BufferAttribute(displacement, 3));
 
     uniforms = { amplitude: { value: 0.0 } };
 
-    const material = new THREE.ShaderMaterial({
+    const material = new ShaderMaterial({
       uniforms,
       vertexShader: `
         uniform float amplitude;
@@ -162,10 +168,10 @@ const AnimatedText = () => {
       transparent: true,
     });
 
-    mesh = new THREE.Mesh(geometry, material);
+    mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    renderer = new WebGLRenderer({ alpha: true, antialias: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(width, height);
     containerRef.current.innerHTML = "";
