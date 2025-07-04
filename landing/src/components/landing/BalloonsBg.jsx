@@ -27,7 +27,7 @@ const BalloonsBg = () => {
       const isMobile = window.innerWidth < 768;
       const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-      const numSpheres = isMobile ? 10 : isTablet ? 20 : 30;
+      const numSpheres = isMobile ? 10 : isTablet ? 15 : 20;
       const spreadX = isMobile ? 10 : isTablet ? 20 : 28;
       const spreadY = isMobile ? 12 : isTablet ? 12 : 18;
       const spreadZ = isMobile ? 10 : isTablet ? 16 : 24;

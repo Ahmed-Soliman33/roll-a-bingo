@@ -215,7 +215,7 @@ const AnimatedText = () => {
     };
 
     if ("requestIdleCallback" in window) {
-      requestIdleCallback(initScene);
+      requestIdleCallback(() => initScene());
     } else {
       setTimeout(initScene, 0);
     }
