@@ -1,18 +1,14 @@
 import { Link } from "react-router-dom";
-import { Suspense, lazy } from "react";
 
 import logoImage from "/logo.webp";
 import AnimatedTextWrapper from "./AnimatedTextWrapper";
-
-const BalloonsBg = lazy(() => import("./BalloonsBg"));
+import BalloonsBgWrapper from "./BallonsBgWrapper";
 
 const HeroSection = () => {
   return (
     <div className="relative max-h-[80vh] w-full overflow-hidden md:min-h-screen">
       {/* Animated Background */}
-      <Suspense fallback={null}>
-        <BalloonsBg />
-      </Suspense>
+      <BalloonsBgWrapper />
 
       {/* Fog layer */}
       <img
