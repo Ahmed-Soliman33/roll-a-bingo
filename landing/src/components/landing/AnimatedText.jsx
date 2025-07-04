@@ -5,9 +5,8 @@ import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { TessellateModifier } from "three/examples/jsm/modifiers/TessellateModifier";
 
 import fontJson from "../../assets/Backso_Regular.json";
-// import fontJson from "https://res.cloudinary.com/dqlvs4ae5/raw/upload/v1751594365/Backso_Regular_unez5e.json";
 
-const TessellatedText = () => {
+const AnimatedText = () => {
   const containerRef = useRef();
 
   useEffect(() => {
@@ -227,11 +226,11 @@ const TessellatedText = () => {
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-10 h-full w-full"
       />
-      <div className="absolute top-[40%] left-1/2 z-20 hidden w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-sm font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:text-xl lg:block">
+      <div className="font-gameBubble absolute top-[40%] left-1/2 z-20 hidden w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-sm font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:text-2xl lg:block">
         EXPERIENCE THE THRILL OF THIS MODERN GAME
       </div>
     </div>
   );
 };
 
-export default memo(TessellatedText);
+export default memo(AnimatedText);

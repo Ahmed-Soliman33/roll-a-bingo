@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "backso";
+  src:
+    url("Backso.woff2") format("woff2"),
+    url("Backso.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "game-bubble";
+  src:
+    url("GameBubble.woff2") format("woff2"),
+    url("GameBubble.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

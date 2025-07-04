@@ -1,21 +1,20 @@
-// import fogImage from "@assets/fog.webp";
-// import fogImage from "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp";
-import logoImage from "/logo.webp";
 import { Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
-const AnaglyphScene = lazy(() => import("./ThreeMeshBatch"));
-const AnimatedTextShader = lazy(() => import("./AnimatedTextShader"));
+import logoImage from "/logo.webp";
+
+const BalloonsBg = lazy(() => import("./BalloonsBg"));
+const AnimatedText = lazy(() => import("./AnimatedText"));
 
 const HeroSection = () => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      {/* الخلفية المتحركة */}
+      {/* Animated Background */}
       <Suspense fallback={null}>
-        <AnaglyphScene />
+        <BalloonsBg />
       </Suspense>
 
-      {/* طبقة الضباب */}
+      {/* Fog layer */}
       <img
         src="https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594365/fog_xqtea8.webp"
         alt=""
@@ -24,8 +23,7 @@ const HeroSection = () => {
         style={{ willChange: "transform" }}
       />
 
-      {/* المحتوى النصي أو أي عناصر أمامية */}
-
+      {/* Text content or any front-end elements */}
       <div className="absolute top-1/2 left-1/2 z-40 h-[90vh] w-[100vw] -translate-x-1/2 -translate-y-1/2 text-center text-white">
         <Link to="/">
           <img
@@ -38,7 +36,7 @@ const HeroSection = () => {
         </Link>
 
         <Suspense fallback={null}>
-          <AnimatedTextShader />
+          <AnimatedText />
         </Suspense>
       </div>
     </div>

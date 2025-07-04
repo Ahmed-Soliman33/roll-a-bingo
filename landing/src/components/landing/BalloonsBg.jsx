@@ -4,7 +4,7 @@ import * as THREE from "three";
 // import cloudImage from "../../assets/fog1.webp";
 // import cloudImage from "https://res.cloudinary.com/dqlvs4ae5/image/upload/v1751594366/fog1_zobjtx.webp";
 
-const AnaglyphScene = () => {
+const BalloonsBg = () => {
   const containerRef = useRef();
   const spheresRef = useRef([]);
   const cameraRef = useRef();
@@ -186,4 +186,4 @@ const AnaglyphScene = () => {
   );
 };
 
-export default memo(AnaglyphScene);
+export default memo(BalloonsBg);

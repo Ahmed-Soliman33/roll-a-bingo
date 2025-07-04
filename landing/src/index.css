@@ -1,11 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("/fonts.css");
 @import "tailwindcss";
-
-@plugin "daisyui" {
-  themes: light --default;
-}
 
 @theme {
   --color-primaryColor: #7300bd;
@@ -18,17 +12,8 @@
   --color-primaryTextColor: #fff;
   --color-secondaryTextColor: #4f4f4f;
 
-  --font-workSansFont: "Work Sans", sans-serif;
-  --font-robotoFont: "Roboto", sans-serif;
-}
-
-@layer base {
-  body {
-    @apply font-robotoFont;
-    @apply bg-white;
-    @apply text-primaryTextColor;
-    @apply scroll-smooth;
-  }
+  --font-backso: "backso";
+  --font-gameBubble: "game-bubble";
 }
 
 html,
@@ -37,4 +22,31 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: "backso", sans-serif;
+}
+
+/* Scrollbar Style for WebKit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2b002f; /* Dark background reflects purple color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ea88c6, #bf0d74);
+  border-radius: 6px;
+}
+
+/* When hovering, yellow appears with purple */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #f6c500, #bf0d74);
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ea88c6 #2b002f;
 }
