@@ -13,10 +13,20 @@ const AnimatedText = () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    const getCameraZ = (w) =>
-      w < 480 ? 480 : w < 640 ? 420 : w < 768 ? 360 : w < 1024 ? 320 : 280;
-    const getFontSize = (w) =>
-      w < 480 ? 16 : w < 640 ? 20 : w < 768 ? 24 : 30;
+    const getCameraZ = (w) => {
+      if (w < 480) return 480;
+      if (w < 640) return 420;
+      if (w < 768) return 360;
+      if (w < 1024) return 320;
+      return 280;
+    };
+
+    const getFontSize = (w) => {
+      if (w < 480) return 16;
+      if (w < 640) return 20;
+      if (w < 768) return 24;
+      return 30;
+    };
 
     camera = new THREE.PerspectiveCamera(40, width / height, 1, 10000);
     camera.position.set(0, 100, getCameraZ(width));
@@ -36,9 +46,59 @@ const AnimatedText = () => {
     });
 
     geometry.computeBoundingBox();
-    const bb = geometry.boundingBox;
-    const textWidth = bb.max.x - bb.min.x;
-    geometry.translate(-textWidth / 2, -bb.min.y * 60, -100);
+    const boundingBox = geometry.boundingBox;
+    const textWidth = boundingBox.max.x - boundingBox.min.x;
+    function getTranslate() {
+      if (width > 1280)
+        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 45, -20);
+
+      if (width > 1180)
+        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 50, -50);
+
+      if (width > 1024)
+        return geometry.translate(
+          -textWidth / 2,
+          -boundingBox.min.y * 50,
+          -100,
+        );
+
+      if (width > 900)
+        return geometry.translate(
+          -textWidth / 2,
+          -boundingBox.min.y * 62,
+          -130,
+        );
+
+      if (width > 800)
+        return geometry.translate(
+          -textWidth / 2,
+          -boundingBox.min.y * 65,
+          -180,
+        );
+
+      if (width > 780)
+        return geometry.translate(
+          -textWidth / 2,
+          -boundingBox.min.y * 65,
+          -167,
+        );
+
+      if (width > 640)
+        return geometry.translate(
+          -textWidth / 2,
+          -boundingBox.min.y * 75,
+          -150,
+        );
+
+      if (width > 540)
+        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 85, -70);
+
+      if (width > 420)
+        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 95, -40);
+
+      return geometry.translate(-textWidth / 2, -boundingBox.min.y * 100, -110);
+    }
+    getTranslate();
 
     const { TessellateModifier } = await import(
       "three/examples/jsm/modifiers/TessellateModifier"
