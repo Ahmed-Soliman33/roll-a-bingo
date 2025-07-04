@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, memo, Suspense, useEffect, useState } from "react";
 
 const AnimatedText = lazy(() => import("./AnimatedText"));
 
@@ -20,4 +20,4 @@ const AnimatedTextWrapper = () => {
   ) : null;
 };
 
-export default AnimatedTextWrapper;
+export default memo(AnimatedTextWrapper);
