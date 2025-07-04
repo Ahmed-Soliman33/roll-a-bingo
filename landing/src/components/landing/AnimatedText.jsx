@@ -50,53 +50,57 @@ const AnimatedText = () => {
     const textWidth = boundingBox.max.x - boundingBox.min.x;
     function getTranslate() {
       if (width > 1280)
-        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 45, -20);
+        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 60, -20);
 
       if (width > 1180)
-        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 50, -50);
+        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 65, -50);
 
       if (width > 1024)
         return geometry.translate(
           -textWidth / 2,
-          -boundingBox.min.y * 50,
+          -boundingBox.min.y * 60,
           -100,
         );
 
       if (width > 900)
-        return geometry.translate(
-          -textWidth / 2,
-          -boundingBox.min.y * 62,
-          -130,
-        );
+        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 74, -90);
 
       if (width > 800)
         return geometry.translate(
           -textWidth / 2,
-          -boundingBox.min.y * 65,
+          -boundingBox.min.y * 80,
           -180,
         );
 
       if (width > 780)
         return geometry.translate(
           -textWidth / 2,
-          -boundingBox.min.y * 65,
+          -boundingBox.min.y * 82,
           -167,
         );
 
       if (width > 640)
         return geometry.translate(
           -textWidth / 2,
-          -boundingBox.min.y * 75,
-          -150,
+          -boundingBox.min.y * 100,
+          -90,
         );
 
       if (width > 540)
-        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 85, -70);
+        return geometry.translate(
+          -textWidth / 2,
+          -boundingBox.min.y * 120,
+          -70,
+        );
 
       if (width > 420)
-        return geometry.translate(-textWidth / 2, -boundingBox.min.y * 95, -40);
+        return geometry.translate(
+          -textWidth / 2,
+          -boundingBox.min.y * 145,
+          -85,
+        );
 
-      return geometry.translate(-textWidth / 2, -boundingBox.min.y * 100, -110);
+      return geometry.translate(-textWidth / 2, -boundingBox.min.y * 150, -85);
     }
     getTranslate();
 
@@ -173,7 +177,7 @@ const AnimatedText = () => {
 
     const animate = () => {
       animationId = requestAnimationFrame(animate);
-      uniforms.amplitude.value = 1 + Math.sin(Date.now() * 0.001 * 0.5);
+      uniforms.amplitude.value = 1 + Math.sin(Date.now() * 0.001 * 0.3);
       rotation += 0.0015 * direction;
       if (rotation > maxRotation || rotation < -maxRotation) direction *= -1;
       mesh.rotation.y = rotation;
@@ -181,9 +185,6 @@ const AnimatedText = () => {
     };
 
     animate();
-
-    // بعد 5 ثواني وقف الأنيميشن
-    setTimeout(() => cancelAnimationFrame(animationId), 5000);
   };
 
   // requestIdleCallback لتأجيل التنفيذ
@@ -196,12 +197,12 @@ const AnimatedText = () => {
   }, []);
 
   return (
-    <div className="relative flex min-h-[70vh] w-full flex-col gap-10 overflow-hidden sm:h-[80vh] md:h-screen">
+    <div className="relative flex min-h-[70vh] w-full flex-col gap-5 overflow-hidden sm:h-[80vh] md:h-screen">
       <div
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-10 h-full w-full"
       />
-      <div className="font-gameBubble absolute top-[40%] left-1/2 z-20 hidden w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-sm font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:text-2xl lg:block">
+      <div className="font-gameBubble absolute top-[40%] left-1/2 z-20 w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-[12px] font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:text-xl md:tracking-widest lg:text-2xl">
         EXPERIENCE THE THRILL OF THIS MODERN GAME
       </div>
     </div>

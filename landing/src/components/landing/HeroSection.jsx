@@ -8,7 +8,7 @@ const BalloonsBg = lazy(() => import("./BalloonsBg"));
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div className="relative max-h-[80vh] w-full overflow-hidden md:min-h-screen">
       {/* Animated Background */}
       <Suspense fallback={null}>
         <BalloonsBg />
@@ -23,7 +23,7 @@ const HeroSection = () => {
       />
 
       {/* Text content or any front-end elements */}
-      <div className="absolute top-1/2 left-1/2 z-40 h-[90vh] w-[100vw] -translate-x-1/2 -translate-y-1/2 text-center text-white">
+      <div className="absolute top-1/2 left-1/2 z-40 h-full w-full -translate-x-1/2 -translate-y-1/2 text-center text-white">
         <Link to="/">
           <img
             src={logoImage}
