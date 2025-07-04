@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import logoImage from "/logo.webp";
+import AnimatedTextWrapper from "./AnimatedTextWrapper";
 
 const BalloonsBg = lazy(() => import("./BalloonsBg"));
-const AnimatedText = lazy(() => import("./AnimatedText"));
 
 const HeroSection = () => {
   return (
@@ -34,9 +34,7 @@ const HeroSection = () => {
           />
         </Link>
 
-        <Suspense fallback={null}>
-          <AnimatedText />
-        </Suspense>
+        <AnimatedTextWrapper />
       </div>
     </div>
   );
