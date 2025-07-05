@@ -35,7 +35,7 @@ const AboutSection = () => {
           </motion.h2>
 
           {/* Animated Bar */}
-          <div className="mb-6 h-1 w-20 rounded bg-[var(--color-yellowColor)] transition-all duration-500 ease-in-out group-hover:w-40" />
+          <div className="mb-6 h-1 w-20 rounded bg-[var(--color-yellowColor)] transition-all duration-500 ease-in-out group-hover:w-40 group-active:w-32" />
 
           <p
             className="mb-6 text-sm leading-relaxed italic transition-transform duration-300 hover:scale-[1.02] sm:text-base"

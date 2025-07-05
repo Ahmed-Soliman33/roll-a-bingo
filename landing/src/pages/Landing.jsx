@@ -1,7 +1,5 @@
 import HeroSection from "@components/landing/HeroSection";
-import { lazy, Suspense } from "react";
-
-const AboutSection = lazy(() => import("@components/landing/AboutSection"));
+import { Suspense } from "react";
 
 const LandingPage = () => {
   return (
