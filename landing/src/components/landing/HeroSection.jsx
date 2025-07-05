@@ -21,7 +21,7 @@ const HeroSection = () => {
       />
 
       {/* Text content or any front-end elements */}
-      <div className="absolute top-1/2 left-1/2 z-40 h-full w-full -translate-x-1/2 -translate-y-1/2 text-center text-white">
+      <div className="absolute top-1/2 left-1/2 z-40 h-full w-full -translate-x-1/2 -translate-y-1/2 pt-20 text-center text-white">
         <AnimatedTextWrapper
           heading={heroContent.heading}
           subHeading={heroContent.subHeading}
