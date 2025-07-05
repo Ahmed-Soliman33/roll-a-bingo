@@ -159,7 +159,7 @@ const BalloonsBg = () => {
   return (
     <div
       ref={containerRef}
-      className="max-h-[80vh] w-full overflow-hidden md:min-h-screen"
+      className="max-h-[90vh] w-full overflow-hidden md:min-h-screen"
       style={{
         background:
           "linear-gradient(to bottom right, #1d001a, #75106b, #af1173)",

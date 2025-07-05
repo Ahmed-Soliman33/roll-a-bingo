@@ -6,7 +6,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="bg-blackColor relative z-10 w-full overflow-hidden px-4 py-16 sm:px-6 md:px-10 lg:px-20 xl:px-28"
+      className="bg-blackColor relative z-10 w-full overflow-hidden px-4 py-16 pt-32 sm:px-6 md:px-10 md:pt-20 lg:px-20 xl:px-28"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:items-center md:justify-between">
         {/* Text Content */}

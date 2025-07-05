@@ -14,10 +14,12 @@ const BalloonsBgWrapper = () => {
   }, []);
 
   return show ? (
-    <Suspense fallback={null}>
+    <Suspense fallback={<div className="min-h-screen w-full"></div>}>
       <BalloonsBg />
     </Suspense>
-  ) : null;
+  ) : (
+    <div className="min-h-screen w-full"></div>
+  );
 };
 
 export default BalloonsBgWrapper;

@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative max-h-[80vh] w-full overflow-hidden md:min-h-screen"
+      className="relative max-h-[85vh] w-full overflow-hidden md:min-h-screen"
     >
       {/* Animated Background */}
       <BalloonsBgWrapper />
