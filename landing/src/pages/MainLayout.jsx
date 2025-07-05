@@ -12,10 +12,10 @@ const MainLayout = () => {
   useEffect(() => {
     let timer;
     if (document.readyState === "complete") {
-      timer = setTimeout(() => setLoaded(true), 2000);
+      timer = setTimeout(() => setLoaded(true), 2500);
     } else {
       const onLoad = () => {
-        timer = setTimeout(() => setLoaded(true), 2000);
+        timer = setTimeout(() => setLoaded(true), 2500);
       };
       window.addEventListener("load", onLoad);
       return () => {
