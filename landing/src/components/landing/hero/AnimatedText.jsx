@@ -38,6 +38,7 @@ const AnimatedText = ({ heading, subHeading }) => {
       };
 
       const getFontSize = (w) => {
+        if (w < 390) return 22;
         if (w < 480) return 20;
         if (w < 640) return 28;
         if (w < 768) return 30;

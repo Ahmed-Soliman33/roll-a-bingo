@@ -80,14 +80,14 @@ const Header = () => {
               {navItems.map((item) => (
                 <motion.div
                   key={item.text}
-                  whileTap={{ scale: 0.9, rotateZ: -2 }}
-                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9, rotateZ: -10 }}
+                  whileHover={{ scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <Link
                     to={item.path}
-                    smooth={true}
-                    duration={600}
+                    smooth="true"
+                    duration={300}
                     offset={-70}
                     onClick={() => {
                       // Delay modal close to let animation run
