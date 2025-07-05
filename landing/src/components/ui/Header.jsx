@@ -3,19 +3,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { scroller } from "react-scroll";
 import { Menu, X } from "lucide-react";
 import logo from "/logo.webp";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { text: "Home", path: "/" },
-  { text: "About", path: "/about" },
-  { text: "Contact", path: "/contact" },
-  { text: "Games", path: "/games" },
+  { text: "About", path: "#about" },
+  { text: "Contact", path: "#contact" },
+  { text: "Games", path: "#games" },
 ];
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-gradient-to-b from-black/60 to-transparent px-4 py-3 backdrop-blur-md">
+    <header className="fixed top-0 left-0 z-50 w-full bg-gradient-to-b from-black/60 to-transparent px-4 py-6 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
         <motion.img
@@ -24,23 +25,18 @@ const Header = () => {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="w-36 cursor-pointer drop-shadow-lg sm:w-44 md:w-56"
+          className="w-40 cursor-pointer drop-shadow-lg sm:w-44 md:w-56"
         />
 
         {/* Desktop Nav */}
-        <nav className="hidden gap-6 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
-            <motion.button
-              key={item}
-              whileTap={{
-                scale: 1.2,
-                rotateZ: 3,
-              }}
-              whileHover={{
-                scale: 1.1,
-                rotateZ: -2,
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 12 }}
+            <motion.div
+              key={item.text}
+              whileTap={{ scale: 1.15, rotateZ: 3 }}
+              whileHover={{ scale: 1.08, rotateZ: -2 }}
+              transition={{ type: "spring", stiffness: 250, damping: 14 }}
+              className="cursor-pointer"
               onClick={() => {
                 setTimeout(() => {
                   setMenuOpen(false);
@@ -49,12 +45,16 @@ const Header = () => {
                     duration: 800,
                     offset: -70,
                   });
-                }, 400); // استنى الانيميشن يخلص
+                }, 400);
               }}
-              className="relative bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-2xl font-extrabold tracking-widest text-transparent uppercase transition-all duration-500 hover:tracking-[0.2em] hover:blur-[0.3px] hover:brightness-125"
             >
-              <span className="inline-block animate-pulse">{item.text}</span>
-            </motion.button>
+              <Link
+                to={item.path}
+                className="relative inline-block animate-pulse bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-xl font-extrabold tracking-wider text-transparent uppercase transition-all duration-500 hover:tracking-[0.2em] hover:blur-[0.3px] hover:brightness-125"
+              >
+                {item.text}
+              </Link>
+            </motion.div>
           ))}
         </nav>
 
@@ -74,29 +74,31 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="absolute top-0 left-0 z-40 flex h-screen w-full flex-col items-center justify-center gap-8 bg-black/90 text-white backdrop-blur-sm md:hidden"
+              className="absolute top-0 left-0 z-40 flex h-screen w-full flex-col items-center justify-center gap-10 bg-black/90 text-white backdrop-blur-sm md:hidden"
             >
               {navItems.map((item) => (
-                <motion.button
-                  key={item}
+                <motion.div
+                  key={item.text}
                   whileTap={{ scale: 0.9, rotateZ: -2 }}
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  onClick={() => {
-                    setTimeout(() => {
-                      setMenuOpen(false);
-
-                      scroller.scrollTo(`${item.path}`, {
-                        smooth: true,
-                        duration: 600,
-                        offset: -70,
-                      });
-                    }, 250);
-                  }}
-                  className="text-2xl font-extrabold tracking-widest uppercase transition-all duration-300 hover:text-yellow-400"
                 >
-                  {item.text}
-                </motion.button>
+                  <Link
+                    to={item.path}
+                    smooth={true}
+                    duration={600}
+                    offset={-70}
+                    onClick={() => {
+                      // Delay modal close to let animation run
+                      setTimeout(() => {
+                        setMenuOpen(false);
+                      }, 250);
+                    }}
+                    className="nimate-pulse block cursor-pointer bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-4xl font-extrabold tracking-widest text-transparent uppercase transition-all duration-500 hover:tracking-[0.2em] hover:blur-[0.3px] hover:brightness-125"
+                  >
+                    {item.text}
+                  </Link>
+                </motion.div>
               ))}
             </motion.div>
           )}
