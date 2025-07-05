@@ -144,7 +144,7 @@ const AnimatedText = ({ heading, subHeading }) => {
 
         for (let i = 0; i < numFaces; i++) {
           const idx = i * 9;
-          color.setStyle("#f6c500");
+          color.setStyle("#fcd40a");
           color.offsetHSL(0, 0, (Math.random() - 0.5) * 0.2);
           const d = 8 * (0.5 - Math.random());
           for (let j = 0; j < 3; j++) {
