@@ -63,7 +63,7 @@ const Header = () => {
           onClick={() => setMenuOpen(!menuOpen)}
           className="z-[60] text-white md:hidden"
         >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          {menuOpen ? <X size={40} /> : <Menu size={32} />}
         </button>
 
         {/* Mobile Menu */}
@@ -75,6 +75,7 @@ const Header = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
               className="absolute top-0 left-0 z-40 flex h-screen w-full flex-col items-center justify-center gap-10 bg-black/90 text-white backdrop-blur-sm md:hidden"
+              onClick={() => setMenuOpen(false)}
             >
               {navItems.map((item) => (
                 <motion.div
