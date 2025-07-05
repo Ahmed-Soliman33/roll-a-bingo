@@ -76,24 +76,6 @@ const AnimatedText = ({ heading, subHeading }) => {
         const textWidth = boundingBox.max.x - boundingBox.min.x;
 
         function getTranslate() {
-          // if (width > 1280)
-          //   return geometry.translate(
-          //     -textWidth / 2,
-          //     -boundingBox.min.y * 32,
-          //     0,
-          //   );
-          // if (width > 1180)
-          //   return geometry.translate(
-          //     -textWidth / 2,
-          //     -boundingBox.min.y * 32,
-          //     0,
-          //   );
-          // if (width > 1024)
-          //   return geometry.translate(
-          //     -textWidth / 2,
-          //     -boundingBox.min.y * 32,
-          //     0,
-          //   );
           if (width > 900)
             return geometry.translate(
               -textWidth / 2,
@@ -152,7 +134,7 @@ const AnimatedText = ({ heading, subHeading }) => {
 
         for (let i = 0; i < numFaces; i++) {
           const idx = i * 9;
-          color.setStyle("#fcd40a");
+          color.setStyle("#f6c500");
           color.offsetHSL(0, 0, (Math.random() - 0.5) * 0.2);
           const d = 8 * (0.5 - Math.random());
           for (let j = 0; j < 3; j++) {
