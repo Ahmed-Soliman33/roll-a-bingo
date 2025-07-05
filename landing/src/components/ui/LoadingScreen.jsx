@@ -29,7 +29,7 @@ const LoadingScreen = () => {
         className="text-center text-lg font-extrabold tracking-widest sm:text-xl md:text-2xl"
         style={{ fontFamily: "var(--font-backso)" }}
       >
-        ROLL-A-BINGO...
+        Loading...
       </motion.p>
 
       {/* Progress Bar Animation */}
