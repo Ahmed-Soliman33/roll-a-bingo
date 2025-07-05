@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import Lottie from "lottie-react";
-import animationData from "@animations/animation-loading.json";
+
+import Spinner from "./Spinner";
 
 const LoadingScreen = () => {
   return (
@@ -12,14 +12,7 @@ const LoadingScreen = () => {
       }}
     >
       {/* Animated Icon or Game Graphic */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="w-[180px] sm:w-[220px] md:w-[250px]"
-      >
-        <Lottie animationData={animationData} loop autoplay />
-      </motion.div>
+      <Spinner />
 
       {/* Game Title or Catchy Text */}
       <motion.p
