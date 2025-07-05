@@ -5,18 +5,25 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate loading delay or wait for assets
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500); // 2.5 sec
-
-    return () => clearTimeout(timeout);
+    let timer;
+    if (document.readyState === "complete") {
+      timer = setTimeout(() => setLoaded(true), 1000);
+    } else {
+      const onLoad = () => {
+        timer = setTimeout(() => setLoaded(true), 1000);
+      };
+      window.addEventListener("load", onLoad);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("load", onLoad);
+      };
+    }
   }, []);
 
-  return isLoading ? (
+  return !loaded ? (
     <LoadingScreen />
   ) : (
     <div className="flex min-h-screen flex-col overflow-hidden">
