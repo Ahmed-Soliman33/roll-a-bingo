@@ -38,7 +38,7 @@ const AnimatedText = ({ heading, subHeading }) => {
       };
 
       const getFontSize = (w) => {
-        if (w < 390) return 22;
+        if (w < 390) return 24;
         if (w < 480) return 20;
         if (w < 640) return 28;
         if (w < 768) return 30;
@@ -130,7 +130,7 @@ const AnimatedText = ({ heading, subHeading }) => {
               -boundingBox.min.y * 76,
               0,
             );
-          return geometry.translate(-textWidth / 2, -boundingBox.min.y * 76, 0);
+          return geometry.translate(-textWidth / 2, -boundingBox.min.y * 65, 0);
         }
 
         getTranslate();
@@ -228,7 +228,7 @@ const AnimatedText = ({ heading, subHeading }) => {
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-10 h-full w-full"
       />
-      <div className="absolute top-[38%] left-1/2 z-20 w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-[10px] font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:top-[40%] md:text-base md:tracking-widest lg:text-xl">
+      <div className="absolute top-[38%] left-1/2 z-20 w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-[.6rem] font-semibold tracking-wide text-white drop-shadow-lg sm:text-base sm:text-[10px] md:top-[40%] md:text-base md:tracking-widest lg:text-xl">
         {subHeading}
       </div>
     </div>
