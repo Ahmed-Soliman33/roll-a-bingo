@@ -1,5 +1,6 @@
 import AboutSection from "@components/landing/AboutSection";
 import HeroSection from "@components/landing/HeroSection";
+import Spinner from "@components/ui/Spinner";
 import { Suspense } from "react";
 
 const LandingPage = () => {
@@ -7,7 +8,7 @@ const LandingPage = () => {
     <>
       <div className="relative min-h-screen w-full overflow-hidden">
         <HeroSection />
-        <Suspense fallback={null}>
+        <Suspense fallback={<Spinner />}>
           <AboutSection />
         </Suspense>
       </div>

@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
-
-import Footer from "@components/ui/Footer";
-import Header from "@components/ui/Header";
+import { lazy, Suspense, useEffect, useState } from "react";
 import LoadingScreen from "@components/ui/LoadingScreen";
+
+// Lazy load components
+const Header = lazy(() => import("@components/ui/Header"));
+const Footer = lazy(() => import("@components/ui/Footer"));
+const OutletWrapper = lazy(() => import("@components/ui/OutletWrapper"));
 
 const MainLayout = () => {
   const [loaded, setLoaded] = useState(false);
@@ -11,10 +12,10 @@ const MainLayout = () => {
   useEffect(() => {
     let timer;
     if (document.readyState === "complete") {
-      timer = setTimeout(() => setLoaded(true), 1500);
+      timer = setTimeout(() => setLoaded(true), 2000);
     } else {
       const onLoad = () => {
-        timer = setTimeout(() => setLoaded(true), 1500);
+        timer = setTimeout(() => setLoaded(true), 2000);
       };
       window.addEventListener("load", onLoad);
       return () => {
@@ -24,30 +25,18 @@ const MainLayout = () => {
     }
   }, []);
 
-  return (
-    <div className="relative">
-      {/* Loading screen overlay */}
-      <div
-        className={`fixed inset-0 z-50 transition-opacity duration-700 ${
-          loaded ? "pointer-events-none opacity-0" : "opacity-100"
-        }`}
-      >
-        <LoadingScreen />
-      </div>
+  if (!loaded) return <LoadingScreen />;
 
-      {/* Actual app content */}
-      <div
-        className={`transition-opacity duration-700 ${
-          loaded ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      >
+  return (
+    <Suspense fallback={<LoadingScreen />}>
+      <div className="flex min-h-screen flex-col overflow-hidden">
         <Header />
         <main className="flex-1">
-          <Outlet />
+          <OutletWrapper />
         </main>
         <Footer />
       </div>
-    </div>
+    </Suspense>
   );
 };
 
