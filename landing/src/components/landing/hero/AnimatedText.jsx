@@ -76,24 +76,24 @@ const AnimatedText = ({ heading, subHeading }) => {
         const textWidth = boundingBox.max.x - boundingBox.min.x;
 
         function getTranslate() {
-          if (width > 1280)
-            return geometry.translate(
-              -textWidth / 2,
-              -boundingBox.min.y * 32,
-              0,
-            );
-          if (width > 1180)
-            return geometry.translate(
-              -textWidth / 2,
-              -boundingBox.min.y * 32,
-              0,
-            );
-          if (width > 1024)
-            return geometry.translate(
-              -textWidth / 2,
-              -boundingBox.min.y * 32,
-              0,
-            );
+          // if (width > 1280)
+          //   return geometry.translate(
+          //     -textWidth / 2,
+          //     -boundingBox.min.y * 32,
+          //     0,
+          //   );
+          // if (width > 1180)
+          //   return geometry.translate(
+          //     -textWidth / 2,
+          //     -boundingBox.min.y * 32,
+          //     0,
+          //   );
+          // if (width > 1024)
+          //   return geometry.translate(
+          //     -textWidth / 2,
+          //     -boundingBox.min.y * 32,
+          //     0,
+          //   );
           if (width > 900)
             return geometry.translate(
               -textWidth / 2,
@@ -130,6 +130,13 @@ const AnimatedText = ({ heading, subHeading }) => {
               -boundingBox.min.y * 76,
               0,
             );
+          if (width > 390)
+            return geometry.translate(
+              -textWidth / 2,
+              -boundingBox.min.y * 76,
+              0,
+            );
+
           return geometry.translate(-textWidth / 2, -boundingBox.min.y * 65, 0);
         }
 
