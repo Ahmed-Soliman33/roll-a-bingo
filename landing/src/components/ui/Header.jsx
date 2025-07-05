@@ -16,7 +16,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-gradient-to-b from-black/60 to-transparent px-4 py-6 backdrop-blur-md">
+    <header className="fixed top-0 left-0 z-50 w-full bg-gradient-to-b from-black/60 to-transparent px-4 py-6 backdrop-blur-md md:py-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
         <motion.img

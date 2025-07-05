@@ -38,10 +38,10 @@ const AnimatedText = ({ heading, subHeading }) => {
       };
 
       const getFontSize = (w) => {
-        if (w < 480) return 16;
-        if (w < 640) return 20;
-        if (w < 768) return 24;
-        return 30;
+        if (w < 480) return 20;
+        if (w < 640) return 28;
+        if (w < 768) return 30;
+        return 36;
       };
 
       const scene = new Scene();
@@ -58,7 +58,7 @@ const AnimatedText = ({ heading, subHeading }) => {
       }
 
       const loader = new FontLoader();
-      loader.load("/Backso_Regular.json", (font) => {
+      loader.load("/Comica_BD_Regular.json", (font) => {
         const fontSize = getFontSize(width);
         let geometry = new TextGeometry(heading, {
           font,
@@ -78,62 +78,58 @@ const AnimatedText = ({ heading, subHeading }) => {
           if (width > 1280)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 60,
-              -20,
+              -boundingBox.min.y * 32,
+              0,
             );
           if (width > 1180)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 65,
-              -50,
+              -boundingBox.min.y * 32,
+              0,
             );
           if (width > 1024)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 60,
-              -100,
+              -boundingBox.min.y * 32,
+              0,
             );
           if (width > 900)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 74,
-              -90,
+              -boundingBox.min.y * 32,
+              0,
             );
           if (width > 800)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 80,
-              -180,
+              -boundingBox.min.y * 33,
+              -30,
             );
           if (width > 780)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 82,
-              -167,
+              -boundingBox.min.y * 33,
+              -50,
             );
           if (width > 640)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 100,
-              -90,
+              -boundingBox.min.y * 47,
+              0,
             );
           if (width > 540)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 120,
-              -70,
+              -boundingBox.min.y * 55,
+              0,
             );
           if (width > 420)
             return geometry.translate(
               -textWidth / 2,
-              -boundingBox.min.y * 145,
-              -85,
+              -boundingBox.min.y * 76,
+              0,
             );
-          return geometry.translate(
-            -textWidth / 2,
-            -boundingBox.min.y * 150,
-            -85,
-          );
+          return geometry.translate(-textWidth / 2, -boundingBox.min.y * 76, 0);
         }
 
         getTranslate();
@@ -231,7 +227,7 @@ const AnimatedText = ({ heading, subHeading }) => {
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-10 h-full w-full"
       />
-      <div className="font-gameBubble absolute top-[38%] left-1/2 z-20 w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-[11px] font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:top-[40%] md:text-xl md:tracking-widest lg:text-2xl">
+      <div className="absolute top-[38%] left-1/2 z-20 w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-[10px] font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:top-[40%] md:text-base md:tracking-widest lg:text-xl">
         {subHeading}
       </div>
     </div>
