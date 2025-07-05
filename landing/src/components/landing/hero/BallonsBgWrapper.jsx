@@ -13,12 +13,21 @@ const BalloonsBgWrapper = () => {
     }
   }, []);
 
-  return show ? (
-    <Suspense fallback={<div className="min-h-screen w-full"></div>}>
-      <BalloonsBg />
-    </Suspense>
-  ) : (
-    <div className="min-h-screen w-full"></div>
+  // Constant to reserve background space
+  const backgroundStyles = {
+    background: "linear-gradient(to bottom right, #1d001a, #75106b, #af1173)",
+    minHeight: "100vh",
+    width: "100%",
+    overflow: "hidden",
+    position: "relative",
+  };
+
+  return (
+    <div style={backgroundStyles}>
+      <Suspense fallback={<div style={{ width: "100%", height: "100%" }} />}>
+        {show && <BalloonsBg />}
+      </Suspense>
+    </div>
   );
 };
 
