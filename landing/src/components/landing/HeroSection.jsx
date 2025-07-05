@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
-import logoImage from "/logo.webp";
 import AnimatedTextWrapper from "./hero/AnimatedTextWrapper";
 import BalloonsBgWrapper from "./hero/BallonsBgWrapper";
+
+import heroContent from "@content/hero.json";
 
 const HeroSection = () => {
   return (
@@ -12,7 +13,7 @@ const HeroSection = () => {
 
       {/* Fog layer */}
       <img
-        src="https://res.cloudinary.com/dqlvs4ae5/image/upload/f_auto,q_auto,w_auto/v1751594365/fog_xqtea8.webp"
+        src={heroContent.fogLayerImage}
         alt="Fog Image"
         className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-40"
         style={{ willChange: "transform" }}
@@ -21,17 +22,10 @@ const HeroSection = () => {
 
       {/* Text content or any front-end elements */}
       <div className="absolute top-1/2 left-1/2 z-40 h-full w-full -translate-x-1/2 -translate-y-1/2 text-center text-white">
-        <Link to="/">
-          <img
-            src={logoImage}
-            alt="logo Image"
-            className="h-auto w-[20vh] cursor-pointer pt-5 md:w-auto"
-            style={{ willChange: "transform" }}
-            fetchPriority="high"
-          />
-        </Link>
-
-        <AnimatedTextWrapper />
+        <AnimatedTextWrapper
+          heading={heroContent.heading}
+          subHeading={heroContent.subHeading}
+        />
       </div>
     </div>
   );

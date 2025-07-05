@@ -9,7 +9,7 @@ import {
   ShaderMaterial,
 } from "three";
 
-const AnimatedText = () => {
+const AnimatedText = ({ heading, subHeading }) => {
   const containerRef = useRef();
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const AnimatedText = () => {
       const loader = new FontLoader();
       loader.load("/Backso_Regular.json", (font) => {
         const fontSize = getFontSize(width);
-        let geometry = new TextGeometry("ROLL-A-BINGO", {
+        let geometry = new TextGeometry(heading, {
           font,
           size: fontSize,
           depth: 5,
@@ -232,7 +232,7 @@ const AnimatedText = () => {
         className="pointer-events-none absolute inset-0 z-10 h-full w-full"
       />
       <div className="font-gameBubble absolute top-[38%] left-1/2 z-20 w-full max-w-[90vw] -translate-x-1/2 px-4 text-center text-[11px] font-semibold tracking-wide text-white drop-shadow-lg sm:text-base md:top-[40%] md:text-xl md:tracking-widest lg:text-2xl">
-        EXPERIENCE THE THRILL OF THIS MODERN GAME
+        {subHeading}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { lazy, memo, Suspense, useEffect, useState } from "react";
 
 const AnimatedText = lazy(() => import("./AnimatedText"));
 
-const AnimatedTextWrapper = () => {
+const AnimatedTextWrapper = ({ heading, subHeading }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const AnimatedTextWrapper = () => {
 
   return show ? (
     <Suspense fallback={null}>
-      <AnimatedText />
+      <AnimatedText {...{ heading, subHeading }} />
     </Suspense>
   ) : null;
 };
