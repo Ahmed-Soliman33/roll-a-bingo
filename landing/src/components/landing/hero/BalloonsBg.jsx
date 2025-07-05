@@ -162,7 +162,7 @@ const BalloonsBg = () => {
       className="max-h-[80vh] w-full overflow-hidden md:min-h-screen"
       style={{
         background:
-          "linear-gradient(to bottom right, #3e054c, #75106b, #af1173)",
+          "linear-gradient(to bottom right, #1d001a, #75106b, #af1173)",
         overflow: "hidden",
       }}
     />

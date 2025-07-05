@@ -2,15 +2,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primaryColor: #7300bd;
-  --color-secondaryColor: #bf0d74;
-  --color-tertiaryColor: #ea88c6;
+  --color-primaryColor: #1d001a;
+  --color-secondaryColor: #9d184e;
+  --color-tertiaryColor: #ff2b76;
   --color-yellowColor: #f6c500;
   --color-greenColor: #489373;
   --color-redColor: #c10a11;
   --color-blueColor: #006fff;
+  --color-blackColor: #141212;
   --color-primaryTextColor: #fff;
-  --color-secondaryTextColor: #4f4f4f;
+  --color-secondaryTextColor: #a8a4a4;
 
   --font-comica: "Comica_BD";
   --font-backso: "backso";

@@ -6,10 +6,10 @@ import logo from "/logo.webp";
 import { Link } from "react-router-dom";
 
 const navItems = [
-  { text: "Home", path: "/" },
-  { text: "About", path: "#about" },
-  { text: "Contact", path: "#contact" },
-  { text: "Games", path: "#games" },
+  { text: "Home", path: "home" },
+  { text: "About", path: "about" },
+  { text: "Contact", path: "contact" },
+  { text: "Games", path: "games" },
 ];
 
 const Header = () => {
@@ -38,20 +38,21 @@ const Header = () => {
               transition={{ type: "spring", stiffness: 250, damping: 14 }}
               className="cursor-pointer"
               onClick={() => {
-                setTimeout(() => {
-                  setMenuOpen(false);
-                  scroller.scrollTo(item.path, {
-                    smooth: true,
-                    duration: 800,
-                    offset: -70,
-                  });
-                }, 400);
+                if (document.getElementById(item.path)) {
+                  setTimeout(() => {
+                    setMenuOpen(false);
+                    scroller.scrollTo(item.path, {
+                      smooth: true,
+                      duration: 500,
+                      offset: -70,
+                    });
+                  }, 400);
+                } else {
+                  console.warn("Section not found:", item.path);
+                }
               }}
             >
-              <Link
-                to={item.path}
-                className="relative inline-block animate-pulse bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-xl font-extrabold tracking-wider text-transparent uppercase transition-all duration-500 hover:tracking-[0.2em] hover:blur-[0.3px] hover:brightness-125"
-              >
+              <Link className="relative inline-block animate-pulse bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-xl font-extrabold tracking-wider text-transparent uppercase transition-all duration-500 hover:tracking-[0.2em] hover:blur-[0.3px] hover:brightness-125">
                 {item.text}
               </Link>
             </motion.div>
@@ -85,15 +86,19 @@ const Header = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <Link
-                    to={item.path}
-                    smooth="true"
-                    duration={300}
-                    offset={-70}
                     onClick={() => {
-                      // Delay modal close to let animation run
-                      setTimeout(() => {
-                        setMenuOpen(false);
-                      }, 250);
+                      if (document.getElementById(item.path)) {
+                        setTimeout(() => {
+                          setMenuOpen(false);
+                          scroller.scrollTo(item.path, {
+                            smooth: true,
+                            duration: 500,
+                            offset: -70,
+                          });
+                        }, 400);
+                      } else {
+                        console.warn("Section not found:", item.path);
+                      }
                     }}
                     className="nimate-pulse block cursor-pointer bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-4xl font-extrabold tracking-widest text-transparent uppercase transition-all duration-500 hover:tracking-[0.2em] hover:blur-[0.3px] hover:brightness-125"
                   >

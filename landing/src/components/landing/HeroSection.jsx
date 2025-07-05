@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import AnimatedTextWrapper from "./hero/AnimatedTextWrapper";
 import BalloonsBgWrapper from "./hero/BallonsBgWrapper";
 
@@ -7,7 +5,10 @@ import heroContent from "@content/hero.json";
 
 const HeroSection = () => {
   return (
-    <div className="relative max-h-[80vh] w-full overflow-hidden md:min-h-screen">
+    <section
+      id="home"
+      className="relative max-h-[80vh] w-full overflow-hidden md:min-h-screen"
+    >
       {/* Animated Background */}
       <BalloonsBgWrapper />
 
@@ -27,7 +28,7 @@ const HeroSection = () => {
           subHeading={heroContent.subHeading}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

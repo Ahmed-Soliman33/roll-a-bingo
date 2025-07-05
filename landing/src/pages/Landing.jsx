@@ -1,3 +1,4 @@
+import AboutSection from "@components/landing/AboutSection";
 import HeroSection from "@components/landing/HeroSection";
 
 const LandingPage = () => {
@@ -5,6 +6,7 @@ const LandingPage = () => {
     <>
       <div className="relative min-h-screen w-full overflow-hidden">
         <HeroSection />
+        <AboutSection />
       </div>
     </>
   );
