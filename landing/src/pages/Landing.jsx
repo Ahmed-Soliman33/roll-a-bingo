@@ -1,3 +1,4 @@
+import AboutSection from "@components/landing/AboutSection";
 import HeroSection from "@components/landing/HeroSection";
 import { Suspense } from "react";
 
