@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 const locations = [
   "Wildwood Boardwalk, NJ",
