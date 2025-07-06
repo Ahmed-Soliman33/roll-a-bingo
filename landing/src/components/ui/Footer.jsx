@@ -10,7 +10,7 @@ const Footer = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="bg-blackColor w-full px-4 py-6 text-sm text-gray-300 sm:px-10"
+      className="bg-blackColor w-full px-4 pt-10 pb-6 text-sm text-gray-300 sm:px-10"
     >
       {/* حقوق النشر + الجهة المصممة */}
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 sm:flex-row sm:gap-4">

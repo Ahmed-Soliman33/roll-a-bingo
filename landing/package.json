@@ -1,5 +1,5 @@
 {
-  "name": "llc_formation_website",
+  "name": "roll-a-bingo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^10.4.4",
-    "@react-three/fiber": "^9.2.0",
+    "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.23.0",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.525.0",

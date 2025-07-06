@@ -1,8 +1,12 @@
+import { lazy, Suspense } from "react";
+
 import AboutSection from "@components/landing/AboutSection";
-import GamesGallery from "@components/landing/GamesGallery";
 import HeroSection from "@components/landing/HeroSection";
 import Spinner from "@components/ui/Spinner";
-import { Suspense } from "react";
+import ContactSection from "@components/landing/ContactSection";
+import LocationSection from "@components/landing/LocationSection";
+
+const GamesGallery = lazy(() => import("@components/landing/GamesGallery"));
 
 const LandingPage = () => {
   return (
@@ -11,8 +15,12 @@ const LandingPage = () => {
         <HeroSection />
         <Suspense fallback={<Spinner />}>
           <AboutSection />
+        </Suspense>
+        <Suspense fallback={<Spinner />}>
           <GamesGallery />
         </Suspense>
+        <ContactSection />
+        <LocationSection />
       </div>
     </>
   );

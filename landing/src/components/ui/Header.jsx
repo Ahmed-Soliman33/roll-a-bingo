@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const navItems = [
   { text: "Home", path: "home" },
   { text: "About", path: "about" },
-  { text: "Games", path: "games" },
+  { text: "Gallery", path: "gallery" },
   { text: "Contact", path: "contact" },
 ];
 

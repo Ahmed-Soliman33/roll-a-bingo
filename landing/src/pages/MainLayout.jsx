@@ -28,7 +28,18 @@ const MainLayout = () => {
   if (!loaded) return <LoadingScreen />;
 
   return (
-    <Suspense fallback={<LoadingScreen />}>
+    <Suspense
+      fallback={
+        <div
+          className="max-h-[90vh] w-full overflow-hidden md:min-h-screen"
+          style={{
+            background:
+              "linear-gradient(to bottom right, #1d001a, #75106b, #af1173)",
+            overflow: "hidden",
+          }}
+        />
+      }
+    >
       <div className="flex min-h-screen flex-col overflow-hidden">
         <Header />
         <main className="flex-1">

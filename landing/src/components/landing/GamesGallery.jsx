@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Masonry from "react-masonry-css";
-import LazyImage from "@components/ui/LazyImage";
 
+import LazyImage from "@components/ui/LazyImage";
 import img1 from "@assets/portfolio-1.webp";
 import img2 from "@assets/portfolio-2.webp";
 import img3 from "@assets/portfolio-3.webp";
@@ -19,13 +19,13 @@ import img14 from "@assets/portfolio-14.webp";
 
 const images = [
   img1,
-  img2,
   img3,
+  img7,
   img4,
   img5,
   img6,
-  img7,
   img8,
+  img2,
   img9,
   img10,
   img11,
@@ -127,11 +127,16 @@ const GamesGallery = () => {
 
   return (
     <section
-      id="games"
+      id="gallery"
       className="bg-primaryColor relative z-0 w-full overflow-hidden px-6 py-20 sm:px-8 md:px-16 lg:px-24"
     >
       <AnimatedBackground />
-      <div className="text-yellowColor my-12 text-center text-4xl font-extrabold tracking-wider lg:text-5xl">
+      <div
+        className="text-yellowColor my-12 text-center text-4xl font-extrabold tracking-wider lg:text-5xl"
+        style={{
+          textShadow: "0 0 6px var(--color-tertiaryColor)",
+        }}
+      >
         Be part of the fun!
       </div>
       <Masonry
