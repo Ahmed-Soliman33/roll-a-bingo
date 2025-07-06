@@ -14,7 +14,7 @@ const HeroSection = () => {
 
       {/* Fog layer */}
       <img
-        src={`/src/assets/${heroContent.fogLayerImage}`}
+        src={`/assets/${heroContent.fogLayerImage}`}
         alt="Fog Image"
         className="pointer-events-none absolute inset-0 z-30 h-full w-full object-cover opacity-40"
         style={{ willChange: "transform" }}

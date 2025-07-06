@@ -43,7 +43,7 @@ const LazyImage = ({ src, index, alt, className }) => {
       {inView && (
         <img
           ref={imgRef}
-          src={`/src/assets/${src}`}
+          src={`/assets/${src}`}
           alt={alt ? alt : `Gallery image-${index}`}
           className={
             className
