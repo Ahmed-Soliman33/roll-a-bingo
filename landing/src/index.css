@@ -51,3 +51,14 @@ body,
   scrollbar-width: thin;
   scrollbar-color: #ea88c6 #2b002f;
 }
+
+/* Masonry CSS */
+.masonry-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.masonry-grid {
+  justify-content: center;
+}

@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 const navItems = [
   { text: "Home", path: "home" },
   { text: "About", path: "about" },
-  { text: "Contact", path: "contact" },
   { text: "Games", path: "games" },
+  { text: "Contact", path: "contact" },
 ];
 
 const Header = () => {
@@ -62,7 +62,7 @@ const Header = () => {
         {/* Mobile Toggle Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="z-[60] text-white md:hidden"
+          className="text-yellowColor z-[60] md:hidden"
         >
           {menuOpen ? <X size={40} /> : <Menu size={32} />}
         </button>

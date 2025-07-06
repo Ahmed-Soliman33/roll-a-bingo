@@ -1,4 +1,5 @@
 import AboutSection from "@components/landing/AboutSection";
+import GamesGallery from "@components/landing/GamesGallery";
 import HeroSection from "@components/landing/HeroSection";
 import Spinner from "@components/ui/Spinner";
 import { Suspense } from "react";
@@ -10,6 +11,7 @@ const LandingPage = () => {
         <HeroSection />
         <Suspense fallback={<Spinner />}>
           <AboutSection />
+          <GamesGallery />
         </Suspense>
       </div>
     </>
