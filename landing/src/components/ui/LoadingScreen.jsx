@@ -8,7 +8,7 @@ const LoadingScreen = () => {
       className="flex h-screen w-full flex-col items-center justify-center gap-8 px-4 text-white"
       style={{
         background:
-          "linear-gradient(145deg, var(--color-tertiaryColor), var(--color-primaryColor), var(--color-secondaryColor))",
+          "linear-gradient(to bottom right, #1d001a, #75106b, #af1173)",
       }}
     >
       {/* Animated Icon or Game Graphic */}
