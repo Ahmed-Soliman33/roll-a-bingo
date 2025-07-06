@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import LoadingScreen from "@components/ui/LoadingScreen";
+import Spinner from "./Spinner";
 
 const OutletWrapper = () => (
-  <Suspense fallback={<LoadingScreen />}>
+  <Suspense fallback={<Spinner />}>
     <Outlet />
   </Suspense>
 );
