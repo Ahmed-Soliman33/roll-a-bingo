@@ -12,7 +12,7 @@ const Footer = () => {
       viewport={{ once: true }}
       className="bg-blackColor w-full px-4 pt-10 pb-6 text-sm text-gray-300 sm:px-10"
     >
-      {/* حقوق النشر + الجهة المصممة */}
+      {/* Copyright + Designer */}
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 sm:flex-row sm:gap-4">
         <p className="text-center text-[.65rem] tracking-widest sm:text-xs">
           © {year}{" "}
@@ -21,19 +21,19 @@ const Footer = () => {
         </p>
 
         <div className="flex items-center gap-2 text-[.65rem] text-gray-400 sm:text-xs">
-          <span>Developed by</span>
+          <span>Powered by</span>
           <a
             href="https://godaddy.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-yellowColor font-bold text-white transition-colors duration-300"
           >
-            Ahmed Soliman
+            GoDaddy
           </a>
         </div>
       </div>
 
-      {/* روابط التواصل الاجتماعي */}
+      {/* Social Media Links */}
       <motion.div
         className="mt-5 flex justify-center gap-6"
         initial={{ opacity: 0, scale: 0.95 }}

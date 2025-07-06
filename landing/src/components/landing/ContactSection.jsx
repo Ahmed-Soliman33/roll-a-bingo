@@ -3,7 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Phone } from "lucide-react";
 import contactAnimation from "@animations/animation-contact.json";
 import Lottie from "lottie-react";
-import useEmailSender from "@/hooks/useEmailSender";
+import useEmailSender from "@hooks/useEmailSender";
+
+import contactContent from "@content/contact.json";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -101,7 +103,7 @@ const ContactSection = () => {
               textShadow: "0 0 6px var(--color-tertiaryColor)",
             }}
           >
-            Contact us
+            {contactContent.heading}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, x: -20 }}
@@ -109,8 +111,7 @@ const ContactSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-md text-white/70"
           >
-            We're excited to hear from you! Reach out to discuss your event,
-            project, or just say hello.
+            {contactContent.subHeading}
           </motion.p>
 
           <div className="space-y-4 text-sm">
@@ -122,25 +123,21 @@ const ContactSection = () => {
                 className="mb-1 text-[var(--color-yellowColor)]"
                 size={18}
               />
-              <span>714-269-7221</span>
+              <span>{contactContent.phone}</span>
             </a>
-            <a
-              href="mailto:zach@zanigames.com"
-              className="hover:text-yellowColor flex items-center gap-3"
-            >
-              <Mail className="text-[var(--color-yellowColor)]" size={18} />
-              <span>zach@zanigames.com</span>
-            </a>
-            <a
-              href="mailto:ally@zanigames.com"
-              className="hover:text-yellowColor flex items-center gap-3"
-            >
-              <Mail
-                className="mb-1 text-[var(--color-yellowColor)]"
-                size={18}
-              />
-              <span>ally@zanigames.com</span>
-            </a>
+            {contactContent.email.map((email, index) => (
+              <a
+                href={`mailto:${email}`}
+                key={index}
+                className="hover:text-yellowColor flex items-center gap-3"
+              >
+                <Mail
+                  className="mb-1 text-[var(--color-yellowColor)]"
+                  size={18}
+                />
+                <span>{email}</span>
+              </a>
+            ))}
           </div>
         </motion.div>
 

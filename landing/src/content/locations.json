@@ -1,0 +1,24 @@
+{
+  "heading": "Our Locations",
+  "locations": [
+    "Wildwood Boardwalk, NJ",
+    "Castle Rock, CO",
+    "Santa Cruz Boardwalk, CA",
+    "Scene 75 Milford, OH",
+    "Scene 75 Cincinnati, OH"
+  ],
+  "address": {
+    "heading": "ROLL-A-BINGO Location",
+    "address": "205 4th Street, Castle Rock, Colorado 80104"
+  },
+  "hours": [
+    { "day": "Mon", "time": "11:00 am – 08:00 pm" },
+    { "day": "Tue", "time": "11:00 am – 08:00 pm" },
+    { "day": "Wed", "time": "11:00 am – 08:00 pm" },
+    { "day": "Thu", "time": "11:00 am – 08:00 pm" },
+    { "day": "Fri", "time": "11:00 am – 10:00 pm" },
+    { "day": "Sat", "time": "11:00 am – 10:00 pm" },
+    { "day": "Sun", "time": "11:00 am – 08:00 pm" }
+  ],
+  "googleMapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3055.8307824389566!2d-104.85741862445672!3d39.37150127161466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c92571d23fb99%3A0x4e48cb3039a4d679!2s205%204th%20St%2C%20Castle%20Rock%2C%20CO%2080104!5e0!3m2!1sen!2sus!4v1686695052543!5m2!1sen!2sus"
+}

@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 
+import locationContent from "@content/locations.json";
+
 const locations = [
   "Wildwood Boardwalk, NJ",
   "Castle Rock, CO",
@@ -41,11 +43,11 @@ const LocationSection = () => {
               textShadow: "0 0 6px var(--color-tertiaryColor)",
             }}
           >
-            Our Locations
+            {locationContent.heading}
           </h2>
 
           <div className="space-y-1 text-[.8rem] text-white/80 sm:text-base">
-            {locations.map((loc, i) => (
+            {locationContent.locations.map((loc, i) => (
               <p key={i}>- {loc}</p>
             ))}
           </div>
@@ -57,12 +59,12 @@ const LocationSection = () => {
                 textShadow: "0 0 4px var(--color-tertiaryColor)",
               }}
             >
-              ROLL-A-BINGO Location
+              {locationContent.address.heading}
             </h3>
             <div className="mt-2 space-y-2 text-[.8rem] text-white/80 sm:text-[.9rem]">
               <div className="flex items-start gap-3">
                 <MapPin size={20} className="text-yellowColor" />
-                <span>205 4th Street, Castle Rock, Colorado 80104</span>
+                <span>{locationContent.address.address}</span>
               </div>
             </div>
           </div>
@@ -77,7 +79,7 @@ const LocationSection = () => {
               Hours
             </h3>
             <div className="mt-2 grid grid-cols-2 gap-y-1 text-[.8rem] text-white/80 sm:grid-cols-2 sm:text-[.9rem]">
-              {hours.map((h) => (
+              {locationContent.hours.map((h) => (
                 <div
                   key={h.day}
                   className="col-span-2 flex justify-start gap-4"
@@ -102,7 +104,7 @@ const LocationSection = () => {
         >
           <div className="aspect-w-16 aspect-h-9">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3055.8307824389566!2d-104.85741862445672!3d39.37150127161466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c92571d23fb99%3A0x4e48cb3039a4d679!2s205%204th%20St%2C%20Castle%20Rock%2C%20CO%2080104!5e0!3m2!1sen!2sus!4v1686695052543!5m2!1sen!2sus"
+              src={locationContent.googleMapLocation}
               className="h-[300px] w-full border-none sm:h-[400px] lg:h-[500px]"
               allowFullScreen
               loading="lazy"

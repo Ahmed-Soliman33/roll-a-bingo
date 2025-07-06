@@ -96,7 +96,7 @@ const AboutSection = () => {
         >
           <div className="overflow-hidden rounded-lg border border-white/10 shadow-xl">
             <img
-              src={aboutContent.image}
+              src={`/src/assets/${aboutContent.image}`}
               alt="Roll-A-Bingo Room"
               loading="lazy"
               className="h-auto w-full object-cover transition duration-500 ease-in-out hover:scale-[1.02]"

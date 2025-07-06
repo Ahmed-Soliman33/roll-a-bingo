@@ -2,37 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Masonry from "react-masonry-css";
 
 import LazyImage from "@components/ui/LazyImage";
-import img1 from "@assets/portfolio-1.webp";
-import img2 from "@assets/portfolio-2.webp";
-import img3 from "@assets/portfolio-3.webp";
-import img4 from "@assets/portfolio-4.webp";
-import img5 from "@assets/portfolio-5.webp";
-import img6 from "@assets/portfolio-6.webp";
-import img7 from "@assets/portfolio-7.webp";
-import img8 from "@assets/portfolio-8.webp";
-import img9 from "@assets/portfolio-9.webp";
-import img10 from "@assets/portfolio-10.webp";
-import img11 from "@assets/portfolio-11.webp";
-import img12 from "@assets/portfolio-12.webp";
-import img13 from "@assets/portfolio-13.webp";
-import img14 from "@assets/portfolio-14.webp";
-
-const images = [
-  img1,
-  img3,
-  img7,
-  img4,
-  img5,
-  img6,
-  img8,
-  img2,
-  img9,
-  img10,
-  img11,
-  img12,
-  img13,
-  img14,
-];
+import galleryContent from "@content/gallery.json";
 
 const AnimatedBackground = () => {
   const canvasRef = useRef();
@@ -93,7 +63,9 @@ const AnimatedBackground = () => {
 
 const GamesGallery = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(images.length);
+  const [visibleCount, setVisibleCount] = useState(
+    galleryContent.images.length,
+  );
 
   useEffect(() => {
     const checkMobile = () => {
@@ -110,7 +82,7 @@ const GamesGallery = () => {
     if (isMobile) {
       setVisibleCount(6);
     } else {
-      setVisibleCount(images.length); // show all on desktop
+      setVisibleCount(galleryContent.images.length); // show all on desktop
     }
   }, [isMobile]);
 
@@ -137,19 +109,19 @@ const GamesGallery = () => {
           textShadow: "0 0 6px var(--color-tertiaryColor)",
         }}
       >
-        Be part of the fun!
+        {galleryContent.heading}
       </div>
       <Masonry
         breakpointCols={breakpointColumns}
         className="masonry-grid flex gap-6"
         columnClassName="masonry-column"
       >
-        {images.slice(0, visibleCount).map((src, i) => (
+        {galleryContent.images.slice(0, visibleCount).map((src, i) => (
           <LazyImage key={i} src={src} index={i} />
         ))}
       </Masonry>
       {/* Show button only on mobile and if more images available */}
-      {isMobile && visibleCount < images.length && (
+      {isMobile && visibleCount < galleryContent.images.length && (
         <div className="mt-10 text-center">
           <button
             onClick={handleLoadMore}
