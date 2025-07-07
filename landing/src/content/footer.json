@@ -1,0 +1,23 @@
+{
+  "copyrightDesigner": "ROLL-A-BINGO",
+  "poweredBy": "GoDaddy",
+  "poweredByLink": "https://godaddy.com",
+  "socalMedia": [
+    {
+      "icon": "Facebook",
+      "link": "https://www.facebook.com/rollabingo/"
+    },
+    {
+      "icon": "Twitter",
+      "link": "https://twitter.com/rollabingo"
+    },
+    {
+      "icon": "Instagram",
+      "link": "https://www.instagram.com/rollabingo/"
+    },
+    {
+      "icon": "PhoneForwarded",
+      "link": "tel:7142697221"
+    }
+  ]
+}

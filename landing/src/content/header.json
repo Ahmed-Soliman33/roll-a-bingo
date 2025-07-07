@@ -1,0 +1,9 @@
+{
+  "logo": "/logo.webp",
+  "navLinks": [
+    { "text": "Home", "path": "home" },
+    { "text": "About", "path": "about" },
+    { "text": "Gallery", "path": "gallery" },
+    { "text": "Contact", "path": "contact" }
+  ]
+}

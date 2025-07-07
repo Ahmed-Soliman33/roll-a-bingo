@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Phone } from "lucide-react";
-import contactAnimation from "@animations/animation-contact.json";
 import Lottie from "lottie-react";
-import useEmailSender from "@hooks/useEmailSender";
 
+import contactAnimation from "@animations/animation-contact.json";
+import useEmailSender from "@hooks/useEmailSender";
 import contactContent from "@content/contact.json";
 
 const ContactSection = () => {

@@ -3,24 +3,6 @@ import { MapPin } from "lucide-react";
 
 import locationContent from "@content/locations.json";
 
-const locations = [
-  "Wildwood Boardwalk, NJ",
-  "Castle Rock, CO",
-  "Santa Cruz Boardwalk, CA",
-  "Scene 75 Milford, OH",
-  "Scene 75 Cincinnati, OH",
-];
-
-const hours = [
-  { day: "Mon", time: "11:00 am – 08:00 pm" },
-  { day: "Tue", time: "11:00 am – 08:00 pm" },
-  { day: "Wed", time: "11:00 am – 08:00 pm" },
-  { day: "Thu", time: "11:00 am – 08:00 pm" },
-  { day: "Fri", time: "11:00 am – 10:00 pm" },
-  { day: "Sat", time: "11:00 am – 10:00 pm" },
-  { day: "Sun", time: "11:00 am – 08:00 pm" },
-];
-
 const LocationSection = () => {
   return (
     <section

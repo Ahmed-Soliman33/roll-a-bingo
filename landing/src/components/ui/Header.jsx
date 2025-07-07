@@ -2,15 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { scroller } from "react-scroll";
 import { Menu, X } from "lucide-react";
-import logo from "/logo.webp";
 import { Link } from "react-router-dom";
 
-const navItems = [
-  { text: "Home", path: "home" },
-  { text: "About", path: "about" },
-  { text: "Gallery", path: "gallery" },
-  { text: "Contact", path: "contact" },
-];
+import headerContent from "@content/header.json";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,7 +14,7 @@ const Header = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
         <motion.img
-          src={logo}
+          src={headerContent.logo}
           alt="ROLL-A-BINGO"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -30,7 +24,7 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
+          {headerContent.navLinks.map((item) => (
             <motion.div
               key={item.text}
               whileTap={{ scale: 1.15, rotateZ: 3 }}
@@ -78,7 +72,7 @@ const Header = () => {
               className="absolute top-0 left-0 z-40 flex h-screen w-full flex-col items-center justify-center gap-10 bg-black/90 text-white backdrop-blur-sm md:hidden"
               onClick={() => setMenuOpen(false)}
             >
-              {navItems.map((item) => (
+              {headerContent.navLinks.map((item) => (
                 <motion.div
                   key={item.text}
                   whileTap={{ scale: 0.9, rotateZ: -10 }}

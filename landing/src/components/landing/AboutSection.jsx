@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles, Gift, PartyPopper } from "lucide-react";
+
 import aboutContent from "@content/about.json";
 
 const AboutSection = () => {

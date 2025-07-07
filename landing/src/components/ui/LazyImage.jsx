@@ -8,6 +8,7 @@ const LazyImage = ({ src, index, alt, className }) => {
   const [isBig, setIsBig] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
+  // Check if image is bigger than 1000x1000
   useEffect(() => {
     const img = new Image();
     img.src = src;
