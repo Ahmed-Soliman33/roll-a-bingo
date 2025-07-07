@@ -27,8 +27,10 @@ const useEmailSender = ({
       onSuccess?.();
       setTimeout(() => setSubmitted(false), resetDelay);
     } catch (err) {
-      console.error("Email error:", err.text);
-      setError(err.text || "Email send failed");
+      console.error("Email error:", err.text || "Network ");
+      setError(
+        (err.text && "Internal server error occurred") || "Email send failed",
+      );
     } finally {
       setLoading(false);
     }

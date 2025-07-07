@@ -16,7 +16,7 @@ const ContactSection = () => {
 
   const [errors, setErrors] = useState({});
 
-  const { loading, submitted, sendEmail } = useEmailSender({
+  const { loading, submitted, sendEmail, error } = useEmailSender({
     serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
     templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
     publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
@@ -209,6 +209,8 @@ const ContactSection = () => {
             )}
           </div>
 
+          {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
+          {/* Submit Button */}
           <div className="w-full text-center">
             <motion.button
               whileTap={{ scale: 0.97 }}
